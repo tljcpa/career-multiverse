@@ -1,0 +1,77 @@
+/* 全局样式：仅放重置和无法用原子类表达的样式 */
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 229, 255, 0.4);
+}
+
+/* 自定义脉冲动画（比 tailwind 默认更慢） */
+@keyframes slow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.animate-slow-pulse {
+  animation: slow-pulse 2.5s ease-in-out infinite;
+}
+
+/* 数字滚动动画用 */
+@keyframes count-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+.animate-flicker {
+  animation: count-flicker 0.6s ease-in-out infinite;
+}
+
+/* 路由 outlet 容器允许 100vh */
+.app-root { min-height: 100vh; }
+
+/* 纯 CSS 对勾：用 border 配合 rotate 画出，避免使用对勾的 unicode 字符 */
+.checkmark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 11px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkmark-inline {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  vertical-align: middle;
+}
+.checkmark-inline::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  width: 4px;
+  height: 8px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

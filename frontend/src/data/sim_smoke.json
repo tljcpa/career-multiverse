@@ -1,0 +1,1930 @@
+{
+  "sim_id": "smoke_e2e_001",
+  "outcome": {
+    "sim_id": "smoke_e2e_001",
+    "counterfactual_diff": "",
+    "total_applications": 12,
+    "total_interviews": 44,
+    "total_offers": 11,
+    "final_destination_company": "焰火",
+    "final_destination_role": "推荐算法工程师-校招",
+    "final_salary_wan": 68.0,
+    "final_week_when_settled": 12,
+    "journeys": [
+      {
+        "company_code": "焰火",
+        "job_title": "推荐算法工程师-校招",
+        "final_stage": "accepted",
+        "applied_week": 0,
+        "final_round": 4,
+        "interview_scores": [
+          82,
+          72,
+          82,
+          82
+        ],
+        "offer_salary_wan": 68.0,
+        "is_final_destination": true
+      },
+      {
+        "company_code": "深原",
+        "job_title": "大模型算法研究员-校招",
+        "final_stage": "rejected",
+        "applied_week": 0,
+        "final_round": 5,
+        "interview_scores": [
+          75,
+          85,
+          85,
+          85,
+          78
+        ],
+        "offer_salary_wan": 75.0,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "蓝渊智能",
+        "job_title": "模型训练框架工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 0,
+        "final_round": 5,
+        "interview_scores": [
+          85,
+          82,
+          85,
+          85,
+          85
+        ],
+        "offer_salary_wan": 56.0,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "智索",
+        "job_title": "搜索算法工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 0,
+        "final_round": 4,
+        "interview_scores": [
+          85,
+          82,
+          82,
+          78
+        ],
+        "offer_salary_wan": 49.5,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "圈层-α",
+        "job_title": "算法工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 0,
+        "final_round": 3,
+        "interview_scores": [
+          82,
+          82,
+          82
+        ],
+        "offer_salary_wan": 47.25,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "短墨",
+        "job_title": "后端工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 1,
+        "final_round": 4,
+        "interview_scores": [
+          85,
+          88,
+          82,
+          85
+        ],
+        "offer_salary_wan": 56.0,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "音-π",
+        "job_title": "后端工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 1,
+        "final_round": 4,
+        "interview_scores": [
+          85,
+          85,
+          82,
+          82
+        ],
+        "offer_salary_wan": 54.4,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "鲜锋",
+        "job_title": "后端开发工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 1,
+        "final_round": 4,
+        "interview_scores": [
+          82,
+          82,
+          85,
+          82
+        ],
+        "offer_salary_wan": 49.5,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "悦选-3",
+        "job_title": "算法工程师-校招（推荐系统）",
+        "final_stage": "rejected",
+        "applied_week": 1,
+        "final_round": 1,
+        "interview_scores": [
+          55
+        ],
+        "offer_salary_wan": 0.0,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "星域-1",
+        "job_title": "后端开发工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 1,
+        "final_round": 4,
+        "interview_scores": [
+          85,
+          82,
+          82,
+          85
+        ],
+        "offer_salary_wan": 56.25,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "视界-α",
+        "job_title": "后端开发工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 2,
+        "final_round": 3,
+        "interview_scores": [
+          65,
+          65,
+          65
+        ],
+        "offer_salary_wan": 41.3,
+        "is_final_destination": false
+      },
+      {
+        "company_code": "思源智行",
+        "job_title": "大模型应用开发工程师-校招",
+        "final_stage": "rejected",
+        "applied_week": 2,
+        "final_round": 3,
+        "interview_scores": [
+          72,
+          75,
+          75
+        ],
+        "offer_salary_wan": 29.9,
+        "is_final_destination": false
+      }
+    ]
+  },
+  "events": [
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "compete_152",
+      "company_code": "蓝盾云",
+      "job_title": "全栈工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "compete_152",
+      "company_code": "速达圈",
+      "job_title": "全栈开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "compete_047",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "motivation": "顶级大厂推荐算法岗，薪资高且与我的方向高度匹配，适合早期试探市场"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "motivation": "AI基础模型研究员岗，薪资天花板高，技术前沿，与我的项目背景和偏好高度契合"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "motivation": "AI模型训练框架岗，薪资优厚且在上海，技术挑战大，值得一试"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "motivation": "搜索算法岗，NLP和Transformer方向匹配，北京目标城市，薪资合理"
+    },
+    {
+      "event_type": "application",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "motivation": "算法工程师岗，推荐系统+NLP方向匹配，杭州可接受，薪资适中作为备选"
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "reasoning": "Top硕士+计算机专业，项目深度90分，实习和竞赛均优秀，完全匹配焰火高绩效数据驱动文化，且与目标行业高度吻合。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "reasoning": "顶尖学校硕士，项目深度90分，实习和成果均优秀，完全匹配公司对项目含金量的高要求，且HC充足，值得抢人。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "reasoning": "顶尖院校硕士，项目深度90、成果85，搜索算法岗匹配度高，完全达到公司88分标尺。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "reasoning": "Top校硕士，项目深度90且成果突出，匹配公司对项目含金量的高要求，且剩余HC充足，值得推进面试。",
+      "score": 85
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "reasoning": "top校硕士，专业对口，项目与实习强度高且有芯片/框架相关背景，竞赛或成果突出，完全符合蓝渊学历墙和技能门槛。",
+      "score": 85
+    },
+    {
+      "event_type": "interview",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，但抗压能力偏弱，需在后续面试中验证能否适应快速迭代和OKR强驱动的节奏。"
+    },
+    {
+      "event_type": "interview",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 75,
+      "passed": true,
+      "feedback": "项目深度和成果扎实，但技术评审中暴露出对底层原理的理解不够透彻，需加强论文讨论和自驱学习。"
+    },
+    {
+      "event_type": "interview",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "round_num": 1,
+      "interview_kind": "简历追问面",
+      "score": 85,
+      "passed": true,
+      "feedback": "学历背景和项目能力突出，但抗压能力稍弱，需在后续技术答辩中证明能适应高强度军事化管理。"
+    },
+    {
+      "event_type": "interview",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，但压力耐受度一般，建议在后续面试中重点考察其在高强度迭代下的稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 0,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和成果不错，但大小周和文档文化下需要更强调抗压和协作细节，建议在后续轮次中展现更多技术评审和文档习惯。"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_152",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_152",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_047",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_056",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "compete_056",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 1,
+      "candidate_id": "compete_152",
+      "company_code": "蓝盾云",
+      "job_title": "全栈工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 1,
+      "candidate_id": "compete_152",
+      "company_code": "速达圈",
+      "job_title": "全栈开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 1,
+      "candidate_id": "compete_047",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "motivation": "薪资高且在北京，技术栈匹配，top硕值得冲刺"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "motivation": "大厂高薪，技术栈契合，深圳可选，作为中期目标"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "上海大厂，薪资符合预期，技术评审制对成长有利"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "motivation": "推荐算法岗与研究方向高度匹配，杭州可接受"
+    },
+    {
+      "event_type": "application",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "薪资上限高，试探市场，虽在广州但可作保底"
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "项目深度与含金量极高，实习和成果均优秀，完全匹配后端开发岗位，且符合公司高标要求。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "reasoning": "顶尖院校硕士，项目与实习经历突出，技术能力远超岗位要求，且目标行业与公司方向高度契合，但文化匹配细节待面试验证。",
+      "score": 82
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "头部985硕士，项目深度90分且含金量高，大厂实习经历匹配，综合实力远超hiring_bar，是抢手人才。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "reasoning": "top院校硕士，专业对口，项目与实习经历优秀，完全匹配公司招聘标准。",
+      "score": 88
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "reasoning": "QS前100硕士，项目深度90且实习完整模块，简历质量88远超hiring_bar，符合大厂实习和完整模块要求。",
+      "score": 88
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 72,
+      "passed": true,
+      "feedback": "项目深度和数据驱动思维不错，但压力耐受和快速迭代适应性需加强，建议在后续轮次中展示更落地的OKR拆解能力。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量突出，但压力耐受性一般，建议在高压场景下进一步验证其自驱力和技术评审应对能力。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "round_num": 2,
+      "interview_kind": "专业知识面",
+      "score": 82,
+      "passed": true,
+      "feedback": "学历背景和项目能力都很强，但抗压能力一般，在蓝渊的军事化管理下可能还需要进一步打磨。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度扎实，技术理解到位，但抗压能力一般，需在高压场景下进一步验证稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度扎实，但抗压能力偏弱，需在技术评审和大小周节奏中进一步验证韧性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 1,
+      "interview_kind": "简历追问面",
+      "score": 85,
+      "passed": true,
+      "feedback": "学历背景和项目实力都很扎实，但抗压能力偏弱，需在高压环境下进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度扎实，技术栈匹配度高，但抗压能力一般，需在后续轮次验证稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度扎实，技术栈匹配度高，但跨部门协作和抗压能力需在后续轮次进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "round_num": 1,
+      "interview_kind": "技术初面",
+      "score": 55,
+      "passed": false,
+      "feedback": "技术底子不错，但简历中看不到对公司方向和文化的认同，晨会和PPT文化下这种偏独立风格的人容易水土不服。"
+    },
+    {
+      "event_type": "interview",
+      "week": 1,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "项目深挖一面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度扎实，技术落地能力强，但抗压能力需在大小周和数据日报制下进一步验证。"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_152",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_152",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_047",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "compete_056",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 2,
+      "candidate_id": "compete_152",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 2,
+      "candidate_id": "compete_152",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 2,
+      "candidate_id": "compete_047",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 2,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 2,
+      "candidate_id": "compete_056",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 2,
+      "candidate_id": "compete_056",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 83,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "大厂背书+薪资符合底线，北京目标城市，可积累后端经验作为保底"
+    },
+    {
+      "event_type": "application",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "motivation": "AI行业方向匹配，不加班利于长期发展，薪资接近预期，深圳可接受"
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "985硕士科班出身，简历质量与项目能力突出，目标行业与公司方向高度契合，符合文化匹配要求。",
+      "score": 85
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "reasoning": "顶尖院校硕士，专业对口，项目与实习成果突出，行业方向匹配，虽为校招但潜力符合公司标准。",
+      "score": 82
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，但抗压能力一般，需要在实际工作中验证能否适应快节奏的OKR驱动文化。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，技术基础扎实，但抗压能力一般，建议在高压场景下多锻炼，整体符合我们自驱型团队的要求。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "round_num": 3,
+      "interview_kind": "导师面",
+      "score": 85,
+      "passed": true,
+      "feedback": "学历背景和技术项目都很扎实，但抗压能力还需在军事化高压环境中进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，但抗压能力一般，需在晨会和OKR节奏中进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和成果匹配度高，但在技术评审和文档规范上需要进一步适应我们的文化。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 2,
+      "interview_kind": "专业知识面",
+      "score": 88,
+      "passed": true,
+      "feedback": "名校硕士背景扎实，项目与实习经历突出，但抗压能力略有不足，需在高压环境下进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量都很扎实，技术能力突出，但抗压能力稍弱，需在高压场景中进一步验证稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量符合要求，但抗压能力一般，建议在跨部门协作场景中进一步验证其稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "项目深挖二面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和成果扎实，但抗压能力一般，需在日报制和高强度迭代中进一步验证稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "技术初面",
+      "score": 65,
+      "passed": true,
+      "feedback": "技术基础扎实，但抗压能力一般，需确认能否适应加班和跨部门协作文化。"
+    },
+    {
+      "event_type": "interview",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "技术初面",
+      "score": 72,
+      "passed": true,
+      "feedback": "技术基础扎实，项目经验丰富，但需注意在团队协作和流程规范化方面展现更强的稳定性与汇报意识。"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 2,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "salary_offer_wan": 47.25,
+      "expires_week": 6
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 3,
+      "candidate_id": "compete_152",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 3,
+      "candidate_id": "compete_152",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 3,
+      "candidate_id": "compete_047",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 3,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 3,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 3,
+      "candidate_id": "compete_056",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 73,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "compete_047",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 64,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 71,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "compete_056",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 55,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量符合要求，但抗压能力偏弱，需在大小周和OKR穿透文化中证明适应力。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量突出，符合公司重实战、轻学历的风格，但抗压能力需在后续工作中进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "你的学历背景和项目实力都很出色，但抗压能力在蓝渊的高强度环境下需要进一步验证，建议入职后尽快适应我们的军事化管理节奏。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 78,
+      "passed": true,
+      "feedback": "项目经历扎实，技术深度符合要求，但抗压能力一般，需在晨会与OKR文化中进一步考察适应性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 3,
+      "interview_kind": "导师面",
+      "score": 82,
+      "passed": true,
+      "feedback": "学历背景和项目能力都不错，但抗压能力偏弱，建议在高压环境下多锻炼，否则很难适应我们快节奏的绩效文化。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度扎实，技术基础过硬，但抗压能力一般，需在高压场景下进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度和含金量不错，技术基础扎实，但抗压能力一般，需在高压场景下进一步观察。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 3,
+      "interview_kind": "技术 leader 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和成果匹配我们的高要求，但抗压能力一般，需在日报制中证明适应力。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "behavioral 面",
+      "score": 65,
+      "passed": true,
+      "feedback": "技术背景扎实，但加班文化适应性和内部赛马心态存疑，需进一步观察是否能融入PPT汇报和层级沟通节奏。"
+    },
+    {
+      "event_type": "interview",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "behavioral 面",
+      "score": 75,
+      "passed": true,
+      "feedback": "候选人背景扎实，沟通能力良好，但需进一步考察其对公司汇报文化和党团活动的认同度，以及稳定性偏好。"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "salary_offer_wan": 68.0,
+      "expires_week": 7
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 3,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "salary_offer_wan": 49.5,
+      "expires_week": 7
+    },
+    {
+      "event_type": "application",
+      "week": 4,
+      "candidate_id": "compete_152",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 4,
+      "candidate_id": "compete_152",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 76,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "悦选-3",
+      "job_title": "算法工程师-校招（推荐系统）",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 58,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 81,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_152",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 64,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 56,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 81,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 67,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "round_num": 5,
+      "interview_kind": "HR 面",
+      "score": 78,
+      "passed": true,
+      "feedback": "项目深度和含金量非常突出，但抗压能力稍弱，需关注在高压技术评审制下的适应潜力。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "round_num": 5,
+      "interview_kind": "HR 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "学历背景和项目能力都非常出色，但抗压能力在蓝渊的高强度环境下还有提升空间，整体符合我们的高标准要求。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "学历背景顶尖，项目经历扎实，但抗压能力略弱，需在高压环境下进一步验证。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量突出，技术基础扎实，但抗压能力一般，建议在高压场景下进一步观察其稳定性。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 82,
+      "passed": true,
+      "feedback": "项目深度和含金量突出，符合公司结果导向，但抗压能力一般，需在晨会与跨部门协作中进一步观察。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 4,
+      "interview_kind": "HR 面",
+      "score": 85,
+      "passed": true,
+      "feedback": "项目深度扎实，技术背景匹配，但抗压能力一般，需确认能否适应大小周和数据日报制的高强度节奏。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 3,
+      "interview_kind": "价值观面",
+      "score": 65,
+      "passed": true,
+      "feedback": "技术背景扎实，但抗压能力一般，需要观察能否适应我们高强度的汇报和赛马文化。"
+    },
+    {
+      "event_type": "interview",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "round_num": 3,
+      "interview_kind": "价值观面",
+      "score": 75,
+      "passed": true,
+      "feedback": "候选人名校背景、技术扎实，沟通能力良好，但需要进一步确认其是否适应公司重汇报、重流程、不加班的文化氛围，以及对党团活动的参与意愿。"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "salary_offer_wan": 56.25,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "salary_offer_wan": 49.5,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "compete_047",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "salary_offer_wan": 47.25,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "salary_offer_wan": 56.0,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "salary_offer_wan": 54.4,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "salary_offer_wan": 41.3,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "salary_offer_wan": 75.0,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "salary_offer_wan": 56.0,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "salary_offer_wan": 29.9,
+      "expires_week": 8
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "reasoning": "高压绩效和PPT文化不符合偏好"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "加班常态且汇报层级多，不符合预期"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 4,
+      "candidate_id": "user_primary",
+      "company_code": "思源智行",
+      "job_title": "大模型应用开发工程师-校招",
+      "reasoning": "薪资低于最低要求且PPT文化重"
+    },
+    {
+      "event_type": "application",
+      "week": 5,
+      "candidate_id": "compete_056",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 5,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 5,
+      "candidate_id": "compete_152",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 5,
+      "candidate_id": "compete_152",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 5,
+      "candidate_id": "compete_047",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 5,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 60
+    },
+    {
+      "event_type": "interview",
+      "week": 5,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 79,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 5,
+      "candidate_id": "compete_152",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 49,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 5,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 69,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 5,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 64,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 5,
+      "candidate_id": "compete_047",
+      "company_code": "光粒",
+      "job_title": "iOS 客户端开发-校招",
+      "salary_offer_wan": 30.1,
+      "expires_week": 9
+    },
+    {
+      "event_type": "offer_negotiating",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "reasoning": "最契合AI基础模型方向，薪资最高但想试探能否再提升或争取其他福利"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "蓝渊智能",
+      "job_title": "模型训练框架工程师-校招",
+      "reasoning": "薪资低于深原且文化森严，不符合偏好"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "智索",
+      "job_title": "搜索算法工程师-校招",
+      "reasoning": "薪资和行业吸引力不足，且需晨会，不如等焰火或深原"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "reasoning": "薪资最低且派系文化，不适合"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "reasoning": "后端岗位非算法方向，与目标不匹配"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "鲜锋",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "后端岗位且行业非核心偏好"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 5,
+      "candidate_id": "user_primary",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "大小周且电商行业，加班容忍度虽高但薪资不如焰火/深原"
+    },
+    {
+      "event_type": "application",
+      "week": 6,
+      "candidate_id": "compete_152",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "application",
+      "week": 6,
+      "candidate_id": "compete_152",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "motivation": "（规则竞争者）"
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 6,
+      "candidate_id": "compete_056",
+      "company_code": "圈层-α",
+      "job_title": "算法工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 6,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 62
+    },
+    {
+      "event_type": "interview",
+      "week": 6,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 71,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 6,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 66,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 6,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 63,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 6,
+      "candidate_id": "compete_056",
+      "company_code": "视界-α",
+      "job_title": "后端开发工程师-校招",
+      "salary_offer_wan": 41.3,
+      "expires_week": 10
+    },
+    {
+      "event_type": "offer_negotiating",
+      "week": 6,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "reasoning": "薪资和行业都更匹配，尝试谈判到80万以上以弥补技术评审制的潜在压力。"
+    },
+    {
+      "event_type": "screening_pass",
+      "week": 7,
+      "candidate_id": "compete_152",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "screening_reject",
+      "week": 7,
+      "candidate_id": "compete_152",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "reasoning": "（规则竞争者筛选）",
+      "score": 45
+    },
+    {
+      "event_type": "interview",
+      "week": 7,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 4,
+      "interview_kind": "（规则面试）",
+      "score": 80,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 7,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 67,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 7,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 62,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 7,
+      "candidate_id": "compete_047",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "salary_offer_wan": 54.4,
+      "expires_week": 11
+    },
+    {
+      "event_type": "interview",
+      "week": 8,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 73,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 8,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 66,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 8,
+      "candidate_id": "compete_152",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 1,
+      "interview_kind": "（规则面试）",
+      "score": 60,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 9,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "round_num": 4,
+      "interview_kind": "（规则面试）",
+      "score": 66,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 9,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 3,
+      "interview_kind": "（规则面试）",
+      "score": 83,
+      "passed": true,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "interview",
+      "week": 9,
+      "candidate_id": "compete_152",
+      "company_code": "星域-1",
+      "job_title": "后端开发工程师-校招",
+      "round_num": 2,
+      "interview_kind": "（规则面试）",
+      "score": 37,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "offer_issued",
+      "week": 9,
+      "candidate_id": "compete_047",
+      "company_code": "短墨",
+      "job_title": "后端工程师-校招",
+      "salary_offer_wan": 56.0,
+      "expires_week": 12
+    },
+    {
+      "event_type": "interview",
+      "week": 10,
+      "candidate_id": "compete_056",
+      "company_code": "音-π",
+      "job_title": "后端工程师-校招",
+      "round_num": 4,
+      "interview_kind": "（规则面试）",
+      "score": 58,
+      "passed": false,
+      "feedback": "（规则竞争者）"
+    },
+    {
+      "event_type": "offer_accepted",
+      "week": 12,
+      "candidate_id": "user_primary",
+      "company_code": "焰火",
+      "job_title": "推荐算法工程师-校招",
+      "reasoning": "薪资68万远超预期，互联网短视频行业符合目标，绩效强导向与我高加班容忍度匹配，且春招末期需锁定offer。"
+    },
+    {
+      "event_type": "offer_declined",
+      "week": 12,
+      "candidate_id": "user_primary",
+      "company_code": "深原",
+      "job_title": "大模型算法研究员-校招",
+      "reasoning": "薪资75万虽高但AI基础模型行业不确定性较大，且已接受焰火offer，无法同时持有。"
+    }
+  ]
+}

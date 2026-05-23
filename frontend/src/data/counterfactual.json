@@ -1,0 +1,58 @@
+{
+  "primary_candidate_id": "user_primary",
+  "runs_per_variant": 5,
+  "variants": [
+    {
+      "label": "原始",
+      "n_runs": 5,
+      "offer_rate": 0.0,
+      "mean_offers": 0.0,
+      "mean_applications": 13.0,
+      "mean_interviews": 0.0,
+      "mean_salary_when_settled": 0.0,
+      "median_salary_when_settled": 0.0,
+      "settled_rate": 0.0,
+      "destination_distribution": {},
+      "week_settled_distribution": {}
+    },
+    {
+      "label": "resume_quality +10",
+      "n_runs": 5,
+      "offer_rate": 0.0,
+      "mean_offers": 0.0,
+      "mean_applications": 12.0,
+      "mean_interviews": 0.0,
+      "mean_salary_when_settled": 0.0,
+      "median_salary_when_settled": 0.0,
+      "settled_rate": 0.0,
+      "destination_distribution": {},
+      "week_settled_distribution": {}
+    },
+    {
+      "label": "project_strength +15",
+      "n_runs": 5,
+      "offer_rate": 0.0,
+      "mean_offers": 0.0,
+      "mean_applications": 12.8,
+      "mean_interviews": 0.0,
+      "mean_salary_when_settled": 0.0,
+      "median_salary_when_settled": 0.0,
+      "settled_rate": 0.0,
+      "destination_distribution": {},
+      "week_settled_distribution": {}
+    },
+    {
+      "label": "overwork_tolerance = 95",
+      "n_runs": 5,
+      "offer_rate": 0.0,
+      "mean_offers": 0.0,
+      "mean_applications": 12.0,
+      "mean_interviews": 0.0,
+      "mean_salary_when_settled": 0.0,
+      "median_salary_when_settled": 0.0,
+      "settled_rate": 0.0,
+      "destination_distribution": {},
+      "week_settled_distribution": {}
+    }
+  ]
+}

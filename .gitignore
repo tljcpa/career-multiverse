@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# 环境配置（密钥不入库）
+.env
+.env.local
+.env.*.local
+
+# 数据与模型产物（体积大、易再生）
+backend/data/raw/
+backend/data/cache/
+backend/data/checkpoints/
+backend/data/finetuned/
+*.gguf
+*.bin
+*.safetensors
+
+# 日志与临时
+*.log
+logs/
+tmp/
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 内部 / 临时文件不入库
+GITHUB-PAT-指引.md
+智联AI比赛官方详信息.txt
+backend/data/users/
+backend/data/sim_runs/
+/tmp/

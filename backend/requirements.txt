@@ -1,0 +1,56 @@
+# Web 框架
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+pydantic-settings==2.6.0
+# multipart：FastAPI 处理 form 文件上传必需（候选人简历上传走 multipart）
+python-multipart==0.0.12
+
+# 异步 / 并发：1000 次 simulation 需要异步并行
+anyio==4.6.2
+httpx==0.27.2
+
+# LLM 客户端：纯走 OpenAI 兼容协议（httpx 直接调用），
+# 不绑定任何 vendor SDK——切 provider 只动配置不动代码。
+# 覆盖：DeepSeek / Qwen（dashscope 兼容模式）/ Kimi / GLM / 阶跃 / 豆包
+# httpx 已在上面列出，这里不再重复
+
+# Multi-Agent 编排：用自研轻量编排（13 周固定 tick 循环，asyncio 即可），
+# 不引入 LangGraph——它适合"路径不确定的协作"，我们这里是固定 pipeline，
+# 多一层抽象反而 debug 难。如果未来需要加分支决策树再加
+
+# 数据存储
+asyncpg==0.30.0
+redis==5.2.0
+qdrant-client==1.12.1
+
+# 数据处理
+pandas==2.2.3
+numpy==2.1.3
+beautifulsoup4==4.12.3
+lxml==5.3.0
+
+# 配置 / 日志
+python-dotenv==1.0.1
+structlog==24.4.0
+
+# 测试
+pytest==8.3.3
+pytest-asyncio==0.24.0
+
+# ===== 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装 =====
+# 这些依赖体积大、强依赖 CUDA，本机 CPU 上既装不上也用不到。
+# 装法（在 PAI-DSW A10/A100 实例上）：
+#   pip install -r requirements-finetune.txt
+# 之所以仍列在这里：让 reviewer 一眼看到完整的依赖图谱。
+# train.py 用 lazy import，本机执行 --mock 不会触发这些 import。
+#
+# torch==2.4.0                    # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# transformers==4.45.0            # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# peft==0.13.2                    # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# accelerate==1.0.1               # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# trl==0.11.4                     # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# datasets==3.0.1                 # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# bitsandbytes==0.44.1            # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# unsloth==2024.10.7              # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
+# xformers==0.0.28                # 微调依赖：阿里云 GPU 实例上装，本机 dev 不必装
