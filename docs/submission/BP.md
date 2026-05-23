@@ -16,7 +16,7 @@
 | **一句话** | 让 AI 替你跑完整春招的 1000 次平行宇宙 |
 | **赛道** | AI + 求职 |
 | **形态** | Web 产品（已部署 Azure 公网） |
-| **作者** | wly（独立参赛 + AI 工程师 Claude Code 协作） |
+| **作者** | tljcpa（独立参赛 + AI 工程师 Claude Code 协作） |
 | **联系方式** | [待填] |
 | **在线 demo** | http://multiverse.zdwktlj.top/ |
 | **代码仓库** | https://github.com/tljcpa/career-multiverse |
@@ -343,7 +343,7 @@ Layer 2 - 落盘前扫描：
 
 ## P12 · 团队
 
-### 创始人：wly
+### 创始人：tljcpa
 
 - 跨考机械原理（沈阳航空航天大学 804）背景，**非计算机科班**
 - AI 应用能力突出："AI 会 = 我会"
@@ -357,8 +357,8 @@ Layer 2 - 落盘前扫描：
 
 ### 队友：Claude Code（Anthropic Opus 4.7, 1M 上下文）
 
-- 工程实现承包：80%+ 代码由 AI 在 wly 监督下完成
-- 工程决策由 wly 拍板：技术选型、产品形态、商业模式
+- 工程实现承包：80%+ 代码由 AI 在 tljcpa 监督下完成
+- 工程决策由 tljcpa 拍板：技术选型、产品形态、商业模式
 
 ### 为什么这个团队结构是这个时代的真正方法论
 
