@@ -1,6 +1,8 @@
 import { USE_MOCK, httpClient } from './client'
 import * as mock from './mock'
 import type {
+  CandidateProfileResponse,
+  CoachingResponse,
   Company,
   CounterfactualReport,
   UploadResponse,
@@ -25,6 +27,16 @@ export async function uploadCandidate(form: FormData): Promise<UploadResponse> {
   const { data } = await httpClient.post<UploadResponse>('/candidate/upload', form, {
     headers: { 'Content-Type': 'multipart/form-data' }
   })
+  return data
+}
+
+export async function getCandidateProfile(userId: string): Promise<CandidateProfileResponse> {
+  const { data } = await httpClient.get<CandidateProfileResponse>(`/candidate/${userId}/profile`)
+  return data
+}
+
+export async function getCoaching(userId: string): Promise<CoachingResponse> {
+  const { data } = await httpClient.get<CoachingResponse>(`/candidate/${userId}/coaching`)
   return data
 }
 
@@ -89,7 +101,9 @@ export async function listCompanies(): Promise<Company[]> {
 // ============ Admin CRUD ============
 // 注：admin endpoints 都要 X-Admin-Token header（在 client 拦截器里注入）
 
-const ADMIN_TOKEN = (import.meta.env.VITE_ADMIN_TOKEN as string) || 'multiverse-demo-2026'
+// admin token 只从环境变量读，不在源码里硬编码兜底值（仓库公开后避免凭证泄露）。
+// 部署时设 VITE_ADMIN_TOKEN；未设则为空，admin 接口会被后端拒绝（符合最小权限）。
+const ADMIN_TOKEN = (import.meta.env.VITE_ADMIN_TOKEN as string) || ''
 const adminHeaders = { 'X-Admin-Token': ADMIN_TOKEN }
 
 export async function adminListCompanies(): Promise<Company[]> {

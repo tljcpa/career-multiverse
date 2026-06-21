@@ -26,6 +26,8 @@ export interface CompanyJobPosting {
   keywords: string[]
   description: string
   company_name: string
+  work_address: string
+  publish_date: string
 }
 
 export interface Company {
@@ -38,11 +40,65 @@ export interface Company {
   hidden_signals: CompanyHiddenSignals
 }
 
+// ---------- 候选人画像（profile 页用） ----------
+export interface CompositeBreakdown {
+  base_avg: number
+  school_bonus: number
+  school_tier_label: string
+  degree_bonus: number
+  degree_label: string
+  comm_adjust: number
+  raw_total: number
+  final: number
+}
+
+export interface CandidateSignalsBrief {
+  school_tier: string
+  school_tier_label: string
+  gpa_percentile: number
+  project_strength: number
+  internship_strength: number
+  achievements_strength: number
+  communication_score: number
+  composite_score: number
+  composite_breakdown: CompositeBreakdown
+}
+
+export interface CompanyMatchItem {
+  code_name: string
+  industry: string
+  hiring_bar: number
+  gap: number
+  label: '挑战' | '够格' | '保底' | '顶尖优选'
+}
+
+export interface CandidateProfileResponse {
+  user_id: string
+  resume_summary: {
+    name: string
+    school: string
+    major: string
+    target_roles: string[]
+  }
+  signals: CandidateSignalsBrief
+  top_companies: CompanyMatchItem[]
+  market_summary: string
+  reasoning: Record<string, string>
+}
+
+// ---------- LLM 个性化建议（Report 页关键结论用） ----------
+export interface CoachingResponse {
+  summary: string
+  advices: string[]
+  biggest_gap: string
+  top_strength: string
+}
+
 // ---------- Sim 输出（与 SimOutcome 对齐） ----------
 export interface Journey {
   company_code: string
   job_title: string
-  final_stage: 'applied' | 'screening_pass' | 'screening_fail' | 'interviewing' | 'offer' | 'accepted' | 'rejected'
+  final_stage: 'applied' | 'screened_in' | 'interviewing' | 'offered' | 'accepted' | 'rejected' | 'withdrawn'
   applied_week: number
   final_round: number
   interview_scores: number[]
@@ -135,7 +191,7 @@ export interface SimSessionStartResponse {
 export interface SimSessionStatus {
   sim_session_id: string
   progress: number   // 0..1
-  stage: 'queued' | 'extracting' | 'generating_pairs' | 'lora_training' | 'simulating' | 'done'
+  stage: 'queued' | 'extracting' | 'matching_market' | 'sim_running' | 'simulating' | 'done'
   current_run: number
   total_runs: number
   message: string

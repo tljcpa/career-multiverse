@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router'
+import { useSessionStore } from '@/stores/session'
 
 // 用户旅程顺序：Upload → Finetuning → Sandbox → Report
 // 用 hash 路由：纯静态部署也能跑，对 demo 友好
@@ -13,9 +14,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/Upload.vue')
   },
   {
-    path: '/finetuning',
-    name: 'finetuning',
-    component: () => import('@/views/Finetuning.vue')
+    // profile：替代旧 finetuning 黑话页
+    path: '/profile',
+    name: 'profile',
+    component: () => import('@/views/Profile.vue')
   },
   {
     path: '/sandbox',
@@ -45,6 +47,19 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+// 守卫：sandbox / finetuning / report 必须先有 user_id（即跑过 upload）
+// admin / dashboard 是评委用的，不拦
+const PROTECTED = new Set(['profile', 'sandbox', 'report'])
+router.beforeEach((to) => {
+  if (PROTECTED.has(String(to.name))) {
+    const session = useSessionStore()
+    if (!session.hasUploaded) {
+      return { name: 'upload' }
+    }
+  }
+  return true
 })
 
 export default router

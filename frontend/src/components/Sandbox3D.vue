@@ -95,9 +95,27 @@ function colorForIndustry(industry: string): number {
 // 用 hash 把字符串映射成稳定颜色（fallback）
 
 // ---------- 场景初始化 ----------
+// WebGL 可用性探测（无 GPU / 老 Edge / 远控演示 / 禁用硬件加速 都会让 WebGL 不可用）
+// 之前直接 new WebGLRenderer 抛错会让整页白屏
+function isWebGLAvailable(): boolean {
+  try {
+    const canvas = document.createElement('canvas')
+    return !!(window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')))
+  } catch {
+    return false
+  }
+}
+
+const webglUnavailable = ref(false)
+
 function initScene() {
   const container = containerRef.value
   if (!container) {
+    return
+  }
+  if (!isWebGLAvailable()) {
+    webglUnavailable.value = true
     return
   }
   const w = container.clientWidth
@@ -110,11 +128,29 @@ function initScene() {
   camera.position.set(0, 18, 45)
   camera.lookAt(0, 0, 0)
 
-  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+  try {
+    renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance',
+      failIfMajorPerformanceCaveat: false,
+    })
+  } catch (e) {
+    console.warn('WebGL 创建失败，降级到 fallback', e)
+    webglUnavailable.value = true
+    return
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
   renderer.setSize(w, h)
   renderer.setClearColor(0x000000, 0)
   container.appendChild(renderer.domElement)
+  // WebGL context lost 兜底：alt-tab / 远控 hiccup / 切显卡 都可能触发，必须立刻
+  // 停 RAF 并显示 fallback UI，避免画面冻结 + console 红字刷屏（评委演示翻车点）
+  renderer.domElement.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault()
+    console.warn('WebGL context lost — switching to fallback')
+    webglUnavailable.value = true
+  })
 
   raycaster = new THREE.Raycaster()
 
@@ -239,6 +275,11 @@ function buildCompanyNodes() {
       scene!.add(mesh)
       companyMeshes.set(company.code_name, mesh)
       companyPositions.set(company.code_name, mesh.position.clone())
+      // 公司名 sprite label：评委一眼能识别哪个节点是哪家公司
+      const labelSprite = makeLabelSprite(company.code_name, '#e8ecff')
+      labelSprite.position.set(px, py + 1.6, pz)
+      labelSprite.scale.set(4.5, 1.2, 1)
+      scene!.add(labelSprite)
     })
     idx++
   }
@@ -442,7 +483,11 @@ function onPointerMove(e: MouseEvent) {
 
 function onPointerClick() {
   if (hoveredMesh && hoveredMesh.userData.company) {
-    emit('company-click', hoveredMesh.userData.company)
+    const company = hoveredMesh.userData.company as Company
+    // 同时触发：(1) 投递粒子流动画（视觉反馈"我向这家投了简历"）
+    // (2) emit 给父组件打开 HR 对话框
+    launchProjectile(company.code_name)
+    emit('company-click', company)
   }
 }
 
@@ -511,5 +556,19 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="containerRef" class="w-full h-full relative" />
+  <div ref="containerRef" class="w-full h-full relative">
+    <div v-if="webglUnavailable" class="absolute inset-0 flex items-center justify-center bg-space-bg/80">
+      <div class="panel-glass p-6 max-w-md text-center">
+        <div class="text-cyber-pink text-lg font-bold mb-2">3D 沙盘需要 WebGL</div>
+        <p class="text-ink-300 text-sm">
+          你的浏览器未开启 WebGL（常见于远控演示 / 公司锁版 IE-Edge / 禁用硬件加速）。
+        </p>
+        <p class="text-ink-500 text-xs mt-3">
+          演示其他功能不受影响——请直接进入
+          <router-link to="/report" class="text-cyber-cyan underline">报告页</router-link>
+          查看 1000 次平行春招的统计结论。
+        </p>
+      </div>
+    </div>
+  </div>
 </template>

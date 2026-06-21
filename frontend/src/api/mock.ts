@@ -79,9 +79,9 @@ export async function mockSimStatus(): Promise<SimSessionStatus> {
   if (p < 0.1) {
     _simStage = 'extracting'
   } else if (p < 0.25) {
-    _simStage = 'generating_pairs'
+    _simStage = 'matching_market'
   } else if (p < 0.65) {
-    _simStage = 'lora_training'
+    _simStage = 'sim_running'
   } else if (p < 1) {
     _simStage = 'simulating'
   } else {
@@ -90,10 +90,10 @@ export async function mockSimStatus(): Promise<SimSessionStatus> {
 
   const stageMsg: Record<SimSessionStatus['stage'], string> = {
     queued: '排队中...',
-    extracting: '正在抽取个人信息（学校 / 专业 / 项目 / 实习）',
-    generating_pairs: '生成 LoRA 训练数据 200 对（你的"语气"对话样本）',
-    lora_training: 'LoRA 微调中（rank=16, 2 epochs）',
-    simulating: '化身已就位，正在模拟 1000 个春招宇宙',
+    extracting: '校准你的求职画像（学校档 / 经历 / 沟通）',
+    matching_market: '扫描 49 家公司招聘门槛，定位你的候选池',
+    sim_running: '并行启动 1000 个春招宇宙（49 公司 × 13 周招聘窗 × 蒙特卡洛）',
+    simulating: '化身已进场，正在跑 1000 个春招宇宙',
     done: '所有平行宇宙已就绪'
   }
 

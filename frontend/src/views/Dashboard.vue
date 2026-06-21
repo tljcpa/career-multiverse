@@ -61,9 +61,6 @@ const stats = computed(() => {
     avgBar: Math.round(avgBar),
     avgQuality: Math.round(avgQuality),
     totalJDs,
-    // 估算的全市场 simulated offer 数（拍脑袋的统计推断）：
-    // 49 公司 × 平均 0.3 offer 率 / 公司 × 200 候选人 ≈ 总 offer
-    estimatedOffers: Math.round(c.length * 0.4 * p.length)
   }
 })
 
@@ -320,23 +317,23 @@ watch(tierDist, () => setTimeout(renderTierPie, 50))
       <div v-if="stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div class="panel-glass p-5">
           <p class="text-ink-400 text-xs">入驻公司</p>
-          <p class="text-4xl font-bold title-gradient mt-2">{{ stats.companies }}</p>
+          <p class="text-4xl font-mono font-bold text-cyber-cyan mt-2">{{ stats.companies }}</p>
           <p class="text-ink-500 text-xs mt-1">总计 {{ stats.totalJDs }} 个 JD</p>
         </div>
         <div class="panel-glass p-5">
           <p class="text-ink-400 text-xs">活跃求职者</p>
-          <p class="text-4xl font-bold title-gradient mt-2">{{ stats.personas }}</p>
+          <p class="text-4xl font-mono font-bold text-cyber-purple mt-2">{{ stats.personas }}</p>
           <p class="text-ink-500 text-xs mt-1">平均简历质量 {{ stats.avgQuality }}/100</p>
         </div>
         <div class="panel-glass p-5">
           <p class="text-ink-400 text-xs">平均招聘门槛</p>
-          <p class="text-4xl font-bold title-gradient mt-2">{{ stats.avgBar }}<span class="text-2xl">/100</span></p>
+          <p class="text-4xl font-mono font-bold text-cyber-gold mt-2">{{ stats.avgBar }}<span class="text-2xl">/100</span></p>
           <p class="text-ink-500 text-xs mt-1">越高 = 越挑</p>
         </div>
         <div class="panel-glass p-5">
-          <p class="text-ink-400 text-xs">估算 Offer 容量</p>
-          <p class="text-4xl font-bold title-gradient mt-2">{{ stats.estimatedOffers }}</p>
-          <p class="text-ink-500 text-xs mt-1">市场整体可发 offer 数（估算）</p>
+          <p class="text-ink-400 text-xs">总 JD 数</p>
+          <p class="text-4xl font-mono font-bold text-cyber-pink mt-2">{{ stats.totalJDs }}</p>
+          <p class="text-ink-500 text-xs mt-1">{{ stats.companies }} 家公司发布的岗位总数</p>
         </div>
       </div>
 
@@ -379,7 +376,7 @@ watch(tierDist, () => setTimeout(renderTierPie, 50))
               <span v-else-if="stats.avgBar > 70">市场总体活跃，竞争激烈但机会充足</span>
               <span v-else>市场友好，多数公司愿意尝试</span>。
             </p>
-            <p>求职者平均简历质量 <span class="text-cyber-cyan font-mono">{{ stats.avgQuality }}/100</span>，估算市场可消化的 offer 总数约 <span class="text-cyber-cyan font-mono">{{ stats.estimatedOffers }}</span>。</p>
+            <p>求职者平均简历质量 <span class="text-cyber-cyan font-mono">{{ stats.avgQuality }}/100</span>，与 <span class="text-cyber-cyan font-mono">{{ stats.totalJDs }}</span> 个 JD 形成动态匹配池——具体每位候选人的 offer 数详见 Report 页 1000 次 sim 统计。</p>
             <p class="text-ink-400 text-xs mt-4 pt-3 border-t border-ink-800">
               市场状态实时变化：访问 <router-link to="/admin" class="text-cyber-cyan underline">市场治理</router-link> 可加入/退出公司或求职者。
             </p>

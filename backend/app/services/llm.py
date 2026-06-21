@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import time
 from enum import Enum
 from typing import Protocol
 
@@ -34,6 +35,14 @@ from pydantic import BaseModel
 from app.core.config import Settings, get_settings
 
 logger = logging.getLogger(__name__)
+
+# 全局 token 计数器（决赛日 LLM 消耗监控）
+_GLOBAL_TOKEN_COUNTER: dict[str, int] = {"calls": 0, "input": 0, "output": 0}
+
+
+def get_llm_usage() -> dict[str, int]:
+    """供 /api/health 或 admin 端点暴露当前进程的 LLM 消耗"""
+    return dict(_GLOBAL_TOKEN_COUNTER)
 
 
 class Tier(str, Enum):
@@ -186,19 +195,37 @@ class LLMRouter:
         max_tokens: int = 1024,
         temperature: float = 0.7,
     ) -> LLMResponse:
-        """业务代码唯一调用入口"""
+        """业务代码唯一调用入口。打 INFO 日志含耗时 + token，便于决赛日盯 LLM 消耗"""
         if tier not in self._routing:
             raise ValueError(
                 f"tier={tier.value} 未配置路由。检查 .env 的 LLM_TIER_{tier.value.upper()}"
             )
         provider, model = self._routing[tier]
-        return await provider.chat(
-            system=system,
-            prompt=prompt,
-            model=model,
-            max_tokens=max_tokens,
-            temperature=temperature,
+        t0 = time.perf_counter()
+        try:
+            resp = await provider.chat(
+                system=system,
+                prompt=prompt,
+                model=model,
+                max_tokens=max_tokens,
+                temperature=temperature,
+            )
+        except Exception as e:
+            elapsed_ms = int((time.perf_counter() - t0) * 1000)
+            logger.warning(f"[llm] tier={tier.value} model={model} FAIL {elapsed_ms}ms: {e}")
+            raise
+        elapsed_ms = int((time.perf_counter() - t0) * 1000)
+        # 单进程 token 累加（决赛日观察消耗）
+        _GLOBAL_TOKEN_COUNTER["input"] += resp.input_tokens
+        _GLOBAL_TOKEN_COUNTER["output"] += resp.output_tokens
+        _GLOBAL_TOKEN_COUNTER["calls"] += 1
+        logger.info(
+            f"[llm] tier={tier.value} model={model} "
+            f"in={resp.input_tokens} out={resp.output_tokens} {elapsed_ms}ms "
+            f"total_calls={_GLOBAL_TOKEN_COUNTER['calls']} "
+            f"total_in={_GLOBAL_TOKEN_COUNTER['input']} total_out={_GLOBAL_TOKEN_COUNTER['output']}"
         )
+        return resp
 
     def describe_routing(self) -> dict[str, str]:
         """启动时打印当前路由，方便确认"""

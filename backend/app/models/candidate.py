@@ -106,6 +106,8 @@ class SchoolTier(str, Enum):
     TIER_LOWER = "lower"  # 二本及以下
     TIER_OVERSEAS_TOP = "overseas_top"  # 海外 QS 100 内
     TIER_OVERSEAS_OTHER = "overseas_other"
+    TIER_UPGRADE_FROM_VOCATIONAL = "upgrade_from_vocational"  # 专升本（统招）
+    TIER_VOCATIONAL = "vocational"  # 专科 / 高职
 
 
 class CandidateHiddenSignals(BaseModel):

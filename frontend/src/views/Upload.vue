@@ -73,7 +73,7 @@ async function startJourney() {
     }
     const resp = await uploadCandidate(form)
     session.setUser(resp)
-    router.push('/finetuning')
+    router.push('/profile')
   } catch (err) {
     if (err instanceof Error) {
       errorMsg.value = err.message
@@ -101,9 +101,9 @@ function skipDemo() {
           上传你的简历<br />让 AI 帮你跑 1000 次春招
         </h1>
         <p class="text-ink-300 text-lg max-w-2xl mx-auto">
-          我们用你的资料 LoRA 微调一个数字分身，让它在 49 家虚构公司组成的招聘宇宙里
-          经历完整春招——投递、笔试、面试、谈薪。然后用统计告诉你：在 1000 个平行宇宙里，
-          你最可能去哪里、能拿多少、哪一步是关键岔路。
+          LLM 一次性读完你的简历，输出五维内部画像 + 每维评分理由，然后让数字分身进入
+          49 家虚构公司组成的招聘宇宙，经历完整春招——投递、笔试、面试、谈薪。
+          统计告诉你：1000 个平行宇宙里，你最可能去哪里、能拿多少、哪一步是关键岔路。
         </p>
       </div>
 
@@ -177,34 +177,36 @@ function skipDemo() {
             <span class="text-cyber-gold">隐私承诺：</span>简历内容仅用于本次模拟，
             不会上传到大模型训练数据集，本地推理 + 即用即删。
           </div>
-          <div class="flex gap-3">
-            <button class="btn-ghost" :disabled="submitting" @click="skipDemo">
+          <div class="flex gap-3 items-center">
+            <span class="text-xs text-cyber-cyan animate-pulse">评委推荐 →</span>
+            <button class="btn-primary !bg-gradient-to-r !from-cyber-cyan/80 !to-cyber-purple/80" :disabled="submitting" @click="skipDemo">
               使用 Demo 数据
             </button>
-            <button class="btn-primary" :disabled="submitting" @click="startJourney">
+            <button class="btn-ghost" :disabled="submitting" @click="startJourney">
               <span v-if="submitting">启动中...</span>
-              <span v-else>开启平行宇宙 →</span>
+              <span v-else>用我的简历</span>
             </button>
           </div>
         </div>
       </div>
 
-      <!-- 三步说明 -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+      <!-- 产品三大模块 -->
+      <div class="text-xs text-ink-500 mt-10 mb-3 uppercase tracking-widest">产品三大模块</div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="panel-glass p-5">
-          <div class="text-cyber-cyan text-3xl font-mono mb-2">01</div>
-          <div class="text-ink-100 font-semibold mb-1">数字分身</div>
-          <div class="text-xs text-ink-300">用你的资料 LoRA 微调一个具有你"语气"的 AI 化身</div>
+          <div class="text-cyber-cyan text-3xl font-mono mb-2">A</div>
+          <div class="text-ink-100 font-semibold mb-1">LLM 画像评估</div>
+          <div class="text-xs text-ink-300">一次调用同时输出 5 维评分 + 每维理由 + 学校档判定，对评委透明可追溯</div>
         </div>
         <div class="panel-glass p-5">
-          <div class="text-cyber-purple text-3xl font-mono mb-2">02</div>
+          <div class="text-cyber-purple text-3xl font-mono mb-2">B</div>
           <div class="text-ink-100 font-semibold mb-1">沙盘推演</div>
-          <div class="text-xs text-ink-300">化身在 49 家虚构公司的春招宇宙中完整跑 1000 次</div>
+          <div class="text-xs text-ink-300">化身在 49 家虚构公司的春招宇宙中跑出 1000 个平行结局</div>
         </div>
         <div class="panel-glass p-5">
-          <div class="text-cyber-pink text-3xl font-mono mb-2">03</div>
+          <div class="text-cyber-pink text-3xl font-mono mb-2">C</div>
           <div class="text-ink-100 font-semibold mb-1">反事实分析</div>
-          <div class="text-xs text-ink-300">如果你的项目再深一点 / 学校再好一点，会发生什么</div>
+          <div class="text-xs text-ink-300">如果你的项目再深一点 / 学校再好一点，offer 率和薪资会发生什么</div>
         </div>
       </div>
     </div>

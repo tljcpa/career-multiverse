@@ -19,7 +19,7 @@ import StarField from '@/components/StarField.vue'
       <nav class="flex items-center gap-6 text-xs text-ink-300">
         <span :class="{ 'text-cyber-cyan': $route.name === 'upload' }">01 上传</span>
         <span class="text-ink-500">→</span>
-        <span :class="{ 'text-cyber-cyan': $route.name === 'finetuning' }">02 微调</span>
+        <span :class="{ 'text-cyber-cyan': $route.name === 'profile' }">02 画像</span>
         <span class="text-ink-500">→</span>
         <span :class="{ 'text-cyber-cyan': $route.name === 'sandbox' }">03 沙盘</span>
         <span class="text-ink-500">→</span>

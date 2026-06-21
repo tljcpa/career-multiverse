@@ -46,3 +46,6 @@ GITHUB-PAT-指引.md
 backend/data/users/
 backend/data/sim_runs/
 /tmp/
+
+# 视频产物（mp4/webm/mp3，大文件，不进 git）
+backend/data/video/

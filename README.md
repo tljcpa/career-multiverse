@@ -40,9 +40,9 @@
 | 步骤 | 截图 |
 |---|---|
 | 01 上传 | 拖拽简历 + GitHub + Blog |
-| 02 微调 | "AI 正在认识你"（RAG-based persona）—— 4 阶段进度 |
+| 02 画像 | "AI 是怎么认识你的"——LLM 五维评分 + 每维评分理由 + 学校档判定 + Top 5 候选公司 |
 | 03 沙盘 | 49 家公司按行业聚成"星团"，化身八面体 + 投递粒子流，支持点击"采访 HR" |
-| 04 报告 | 1000 次平行春招的 KPI / 4 图表 / 反事实滑动条 / 决策树 / 关键结论 |
+| 04 报告 | 1000 次平行春招的 KPI / 4 数据图表 + 决策树 / 反事实滑动条 / 关键结论 |
 
 附加页面：
 - `/dashboard` 市场看板（KPI + 行业 + 招聘门槛 + 学校 tier 分布）
@@ -61,8 +61,8 @@ nginx (80)
                           ↓
               ┌────────────┼────────────────┐
               ↓            ↓                ↓
-        SimulationEngine  RAG-based       Admin CRUD
-              ↓           persona            ↓
+        SimulationEngine  LLM 五维评估     Admin CRUD
+              ↓           + reasoning        ↓
    ┌──────────┼──────────┐                  ↓
    ↓          ↓          ↓             companies_v1.json
 CandidateAgent  CompanyHRAgent  InterviewerAgent  competitors_v1.json
@@ -79,9 +79,9 @@ CandidateAgent  CompanyHRAgent  InterviewerAgent  competitors_v1.json
 | 模块 | 实现 |
 |---|---|
 | **LLM 抽象层** | tier 路由（PRIMARY/SECONDARY/BACKGROUND），OpenAI 兼容协议适配所有大陆主流模型，切换模型 0 代码改动 |
-| **Multi-Agent 沙盘** | 5 类 Agent：求职者分身 / 公司 HR / 面试官 / 竞争者池（规则模拟避免成本爆炸）/ 市场环境 |
+| **Multi-Agent 沙盘** | 3 类 LLM Agent + 1 规则模拟器：CandidateAgent（求职者分身）/ CompanyHRAgent（注入 hidden_signals）/ InterviewerAgent（分轮考评）/ CompetitorSimulator（200 人竞争者池，纯规则） |
 | **反事实分析** | baseline + N 个 mutation 变体，monotonic 单调插值（避免 baseline 接近 100% 时 mutation 反向） |
-| **持久化** | JSON 文件 + threading.Lock + 原子写（tempfile → rename），50 公司 + 200 persona 规模够用 |
+| **持久化** | JSON 文件 + threading.Lock + 原子写（tempfile → rename），49 公司 + 200 persona 规模够用 |
 | **热更新** | admin CRUD endpoints，公司/求职者随时加入退出，下次 sim 启动 snapshot 最新数据 |
 | **合规** | sanitizer 双层（prompt 约束 + 落盘前扫描），全部虚构数据 + 代号公司，零 PII |
 
@@ -93,7 +93,7 @@ CandidateAgent  CompanyHRAgent  InterviewerAgent  competitors_v1.json
 
 | 不做 | 理由 |
 |---|---|
-| **不做 LoRA 微调** | 动态市场场景下 LoRA 是反模式——训完就过期，无法跟随公司/求职者池变化。选 RAG-based persona |
+| **不做 LoRA 微调** | 动态市场场景下 LoRA 是反模式——训完就过期，无法跟随公司/求职者池变化。改用 LLM 一次性多任务评估（5 维评分 + 每维理由 + 学校档判定，全部对评委透明可追溯） |
 | **不做真公司数据** | 合规 0 风险优先。全代号 + sanitizer 双层 |
 | **不做 LangGraph 编排** | 13 周固定 tick 循环不需要"路径不确定的协作"，asyncio + 自研编排更轻 |
 | **不做声音克隆** | 与求职决策无关，炫技抢戏 |
@@ -130,7 +130,7 @@ npm run dev  # dev server
 ### 一键 demo 数据生成
 
 ```bash
-python3 scripts/collect_companies.py    # 生成 50 家虚构公司
+python3 scripts/collect_companies.py    # 生成 49 家虚构公司
 python3 scripts/collect_personas.py     # 生成 200 个竞争者 persona
 ```
 
@@ -142,18 +142,18 @@ python3 scripts/collect_personas.py     # 生成 200 个竞争者 persona
 backend/
 ├── app/
 │   ├── api/             # FastAPI 路由（公开 + admin CRUD）
-│   ├── agents/          # 5 类 Agent
+│   ├── agents/          # 3 类 LLM Agent + 1 规则模拟器
 │   ├── simulation/      # 沙盘引擎 + 反事实分析
 │   ├── models/          # Pydantic schema（严格对齐答疑文档 Q2）
 │   ├── services/        # LLM 抽象层
 │   ├── core/            # 配置
-│   └── finetune/        # LoRA pipeline（路线图，当前未启用）
+│   └── finetune/        # LoRA pipeline（v1 未启用，决赛后扩展用，详见 finetune/README.md）
 ├── data/                # 种子数据（公司/persona）
 └── tests/               # smoke test
 
 frontend/
 ├── src/
-│   ├── views/           # Upload / Finetuning / Sandbox / Report / Admin / Dashboard
+│   ├── views/           # Upload / Profile / Sandbox / Report / Admin / Dashboard
 │   ├── components/      # Sandbox3D / 5 个 D3 charts / HRInterview / CounterfactualPanel
 │   ├── api/             # 统一 API 入口（mock + real 切换）
 │   ├── stores/          # Pinia

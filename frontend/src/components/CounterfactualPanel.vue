@@ -23,24 +23,29 @@ interface SliderConfig {
   unit: string
 }
 
+// 反事实分值口径：
+// resume_quality / project_strength 是化身的 0-100 内部评分（baseline 由你的资料抽取 + 校准得到），
+// 滑动条 delta 直接加减该评分（如 baseline 65，+15 = 假设你打磨到 80 分时的结果）。
+// school_tier 是离散档位 {-2..+2} = {四非, 一本/双一流, 211, 985, 985 top}。
+// 薪资单位全部为「年薪万元」。
 const sliders: SliderConfig[] = [
   {
     key: 'resume_quality',
-    title: '简历质量',
-    desc: '排版、措辞、关键词命中率',
-    min: -20, max: 30, step: 1, default: 0, unit: ''
+    title: '简历质量（0-100 内部评分）',
+    desc: '排版、措辞、关键词命中率。baseline 由 LLM 简历评估自动校准',
+    min: -20, max: 30, step: 1, default: 0, unit: ' 分'
   },
   {
     key: 'project_strength',
-    title: '项目含金量',
+    title: '项目含金量（0-100 内部评分）',
     desc: '项目深度、复杂度、面试官能挖掘的细节',
-    min: -20, max: 30, step: 1, default: 0, unit: ''
+    min: -20, max: 30, step: 1, default: 0, unit: ' 分'
   },
   {
     key: 'school_tier',
-    title: '学校等级',
-    desc: '本科/研究生院校档次（影响简历筛偏好）',
-    min: -2, max: 2, step: 1, default: 0, unit: ''
+    title: '学校等级（档位）',
+    desc: '档位变化：-2=降到四非, -1=一本/双一流, 0=不变, +1=211, +2=985',
+    min: -2, max: 2, step: 1, default: 0, unit: ' 档'
   }
 ]
 
@@ -63,6 +68,10 @@ const mutations = computed<MutationDelta[]>(() => {
 })
 
 async function fetchReport() {
+  // 空 mutations 不调 backend：所有 slider 都在 0 时调用没意义，且 backend min_length=1 会 422
+  if (mutations.value.length === 0) {
+    return
+  }
   loading.value = true
   try {
     report.value = await runCounterfactual(session.simSessionId ?? 'mock_sim', mutations.value)
@@ -166,8 +175,8 @@ const compareVariant = computed(() => {
             <span class="font-mono text-ink-100">{{ baseVariant.mean_offers.toFixed(2) }}</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-ink-300">平均薪资</span>
-            <span class="font-mono text-cyber-gold">{{ baseVariant.mean_salary_when_settled.toFixed(1) }} 万</span>
+            <span class="text-ink-300">平均年薪</span>
+            <span class="font-mono text-cyber-gold">{{ baseVariant.settled_rate > 0 ? baseVariant.mean_salary_when_settled.toFixed(1) + ' 万元/年' : '— （样本不足）' }}</span>
           </div>
           <div class="flex justify-between">
             <span class="text-ink-300">签约率</span>
@@ -198,13 +207,13 @@ const compareVariant = computed(() => {
             </span>
           </div>
           <div class="flex justify-between">
-            <span class="text-ink-300">平均薪资</span>
+            <span class="text-ink-300">平均年薪</span>
             <span class="font-mono">
               <span :class="deltaColor(compareVariant.mean_salary_when_settled - baseVariant.mean_salary_when_settled)">
-                {{ compareVariant.mean_salary_when_settled.toFixed(1) }} 万
+                {{ compareVariant.settled_rate > 0 ? compareVariant.mean_salary_when_settled.toFixed(1) + ' 万元/年' : '—' }}
               </span>
-              <span class="text-[10px] ml-1 text-ink-500">
-                ({{ compareVariant.mean_salary_when_settled >= baseVariant.mean_salary_when_settled ? '+' : '' }}{{ (compareVariant.mean_salary_when_settled - baseVariant.mean_salary_when_settled).toFixed(1) }})
+              <span v-if="compareVariant.settled_rate > 0" class="text-[10px] ml-1 text-ink-500">
+                ({{ compareVariant.mean_salary_when_settled >= baseVariant.mean_salary_when_settled ? '+' : '' }}{{ (compareVariant.mean_salary_when_settled - baseVariant.mean_salary_when_settled).toFixed(1) }} 万元/年)
               </span>
             </span>
           </div>
@@ -231,7 +240,7 @@ const compareVariant = computed(() => {
         >
           <span class="text-ink-300 truncate flex-1 mr-3">{{ v.label }}</span>
           <span class="font-mono text-cyber-cyan">{{ fmtPct(v.offer_rate) }}</span>
-          <span class="font-mono text-cyber-gold ml-3 w-20 text-right">{{ v.mean_salary_when_settled.toFixed(1) }} 万</span>
+          <span class="font-mono text-cyber-gold ml-3 w-24 text-right">{{ v.mean_salary_when_settled.toFixed(1) }} 万元/年</span>
         </div>
       </div>
     </div>

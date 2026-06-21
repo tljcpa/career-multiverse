@@ -63,7 +63,7 @@ function render() {
     }
     if (j.offer_salary_wan > 0) {
       const offerId = `${compId}_offer`
-      nodes.push({ id: offerId, label: `${j.offer_salary_wan}万`, type: 'offer' })
+      nodes.push({ id: offerId, label: `${j.offer_salary_wan} 万/年`, type: 'offer' })
       links.push({ source: compId, target: offerId })
       if (j.is_final_destination) {
         const acceptId = `${compId}_accept`

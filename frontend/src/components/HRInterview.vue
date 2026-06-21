@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref, nextTick } from 'vue'
 import { interviewHR } from '@/api'
+import { useSessionStore } from '@/stores/session'
 import type { Company, HRInterviewResponse } from '@/types/contracts'
+
+const session = useSessionStore()
 
 /**
  * HR 采访对话框。
@@ -45,7 +48,7 @@ async function ask(question?: string) {
   try {
     const resp: HRInterviewResponse = await interviewHR({
       company_code: props.company.code_name,
-      user_id: 'demo',
+      user_id: session.userId ?? 'demo',
       question: q
     })
     messages.value.push({ role: 'hr', text: resp.reply, hidden: resp.hidden_signal_revealed })
@@ -70,7 +73,15 @@ function scrollDown() {
 </script>
 
 <template>
-  <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur" @click.self="emit('close')">
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur"
+    role="dialog"
+    aria-modal="true"
+    :aria-label="`和 ${company.code_name} HR 对话`"
+    tabindex="-1"
+    @click.self="emit('close')"
+    @keydown.esc="emit('close')"
+  >
     <div class="panel-glass w-full max-w-3xl max-h-[85vh] flex flex-col">
       <!-- 头部 -->
       <div class="flex items-start justify-between p-5 border-b border-white/5">
@@ -84,7 +95,7 @@ function scrollDown() {
           <h3 class="text-2xl font-bold text-ink-100">{{ company.code_name }}</h3>
           <p class="text-xs text-ink-500 mt-1">{{ company.inspired_by_hint }}</p>
         </div>
-        <button class="text-ink-300 hover:text-cyber-pink text-2xl leading-none px-2" @click="emit('close')">
+        <button class="text-ink-300 hover:text-cyber-pink text-2xl leading-none px-2" @click="emit('close')" aria-label="关闭对话框">
           ×
         </button>
       </div>

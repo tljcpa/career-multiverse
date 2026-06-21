@@ -96,7 +96,9 @@ async function submitCompany() {
           city_required: newCompany.value.headquarters_city,
           keywords: newCompany.value.job_keywords.split(',').map((s) => s.trim()).filter(Boolean),
           description: `${newCompany.value.code_name} 的 ${newCompany.value.job_title} 岗位`,
-          company_name: newCompany.value.code_name.trim()
+          company_name: newCompany.value.code_name.trim(),
+          work_address: newCompany.value.headquarters_city,
+          publish_date: new Date().toISOString().slice(0, 10)
         }
       ],
       hidden_signals: {
