@@ -240,6 +240,54 @@ class LLMRouter:
             await p.close()
 
 
+class AzureOpenAIProvider:
+    """Azure OpenAI provider（非标准 OpenAI 兼容）。
+    差异：认证用 `api-key` header（不是 Bearer），URL 含 deployment + api-version，
+    请求体不带 model 字段（deployment 已在 URL 里）。
+    tier spec 里的 model 段即 Azure 的 deployment name（如 gpt-4-1-mini）。
+    加它的原因：DeepSeek 官方服务频繁 503 过载，需要稳定备用（微软 Azure）。"""
+
+    def __init__(self, name: str, endpoint: str, api_key: str, api_version: str) -> None:
+        self.name = name
+        self._ep = endpoint.rstrip("/")
+        self._key = api_key
+        self._ver = api_version
+        self._http = httpx.AsyncClient(timeout=60.0)
+
+    async def chat(self, *, system: str, prompt: str, model: str,
+                   max_tokens: int, temperature: float) -> LLMResponse:
+        messages: list[dict[str, str]] = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        messages.append({"role": "user", "content": prompt})
+        body = {"messages": messages, "max_tokens": max_tokens, "temperature": temperature}
+        headers = {"api-key": self._key}
+        url = f"{self._ep}/openai/deployments/{model}/chat/completions?api-version={self._ver}"
+        last_err: Exception | None = None
+        for attempt in range(3):
+            try:
+                r = await self._http.post(url, json=body, headers=headers)
+                r.raise_for_status()
+                data = r.json()
+                text = data["choices"][0]["message"]["content"]
+                usage = data.get("usage", {})
+                return LLMResponse(
+                    text=text, provider=self.name, model=model,
+                    input_tokens=usage.get("prompt_tokens", 0),
+                    output_tokens=usage.get("completion_tokens", 0),
+                )
+            except (httpx.HTTPError, KeyError, ValueError) as e:
+                last_err = e
+                if attempt < 2:
+                    await asyncio.sleep(2**attempt)
+        raise RuntimeError(
+            f"provider={self.name} model={model} 调用失败（3 次重试后）: {last_err}"
+        )
+
+    async def close(self) -> None:
+        await self._http.aclose()
+
+
 # ============ 工厂：从 settings 构建 router ============
 
 # provider 注册表：provider 名 -> (base_url 字段, api_key 字段)
@@ -252,6 +300,7 @@ _OPENAI_COMPAT_REGISTRY: dict[str, tuple[str, str]] = {
     "glm": ("glm_base_url", "glm_api_key"),
     "stepfun": ("stepfun_base_url", "stepfun_api_key"),
     "doubao": ("doubao_base_url", "doubao_api_key"),
+    "nvidia": ("nvidia_base_url", "nvidia_api_key"),
 }
 
 
@@ -273,6 +322,15 @@ def build_router(settings: Settings) -> LLMRouter:
     providers: dict[str, LLMProvider] = {}
     for name in settings.llm_providers:
         name = name.strip().lower()
+        if name == "azure":
+            # Azure OpenAI：非标准 OpenAI 兼容，单独构造
+            if not settings.azure_api_key:
+                raise ValueError("provider=azure 已启用但 AZURE_API_KEY 为空")
+            providers[name] = AzureOpenAIProvider(
+                "azure", settings.azure_endpoint,
+                settings.azure_api_key, settings.azure_api_version,
+            )
+            continue
         if name not in _OPENAI_COMPAT_REGISTRY:
             raise ValueError(
                 f"未知 provider={name}。已支持: {list(_OPENAI_COMPAT_REGISTRY.keys())}。"

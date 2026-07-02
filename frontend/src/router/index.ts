@@ -5,13 +5,27 @@ import { useSessionStore } from '@/stores/session'
 // 用 hash 路由：纯静态部署也能跑，对 demo 友好
 const routes: RouteRecordRaw[] = [
   {
+    // 首页：三端愿景落地页（个人 / 企业 / 学校 = 可实验的人才市场）
     path: '/',
-    redirect: '/upload'
+    name: 'landing',
+    component: () => import('@/views/Landing.vue')
   },
   {
     path: '/upload',
     name: 'upload',
     component: () => import('@/views/Upload.vue')
+  },
+  {
+    // 企业端：企业数字分身 + 策略实验 + 反向品牌（演示视图）
+    path: '/enterprise',
+    name: 'enterprise',
+    component: () => import('@/views/Enterprise.vue')
+  },
+  {
+    // 学校端：本校群体竞争力 + 技能缺口 + 对接雇主（演示视图）
+    path: '/school',
+    name: 'school',
+    component: () => import('@/views/School.vue')
   },
   {
     // profile：替代旧 finetuning 黑话页

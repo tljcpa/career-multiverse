@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
+import random
 import sys
 from pathlib import Path
 from typing import Any
@@ -275,6 +276,23 @@ async def main(argv: list[str]) -> None:
         default=10,
         help="单次 LLM 调用生成的 persona 数量。太大会超 8K token，太小并发开销大",
     )
+    parser.add_argument(
+        "--scale",
+        type=int,
+        default=1,
+        help="SCHOOL_TIER_PLAN 各档人数的整数倍数。默认 1（=200 人），10 -> ~2000 人",
+    )
+    parser.add_argument(
+        "--limit-batches",
+        type=int,
+        default=0,
+        help="仅跑前 N 个 batch（小批验证用），0 表示全跑",
+    )
+    parser.add_argument(
+        "--gen-provider",
+        default="",
+        help="覆盖 BACKGROUND 档 provider:model（如 deepseek:deepseek-chat）。留空用 .env 默认。",
+    )
     args = parser.parse_args(argv)
 
     if args.dry_run:
@@ -288,29 +306,62 @@ async def main(argv: list[str]) -> None:
 
     settings = get_settings()
     router = build_router(settings)
+
+    # 可选：把 persona 生成的 BACKGROUND 档重路由到别的 provider（不改 .env）
+    if args.gen_provider:
+        prov_name, _, model = args.gen_provider.partition(":")
+        if prov_name not in router._providers:
+            raise SystemExit(
+                f"--gen-provider 引用了未注册 provider={prov_name}，"
+                f"已注册: {list(router._providers.keys())}"
+            )
+        router._routing[Tier.BACKGROUND] = (router._providers[prov_name], model)
+        print(f"[override] BACKGROUND 档重路由到 {prov_name}:{model}")
+
     print("=== LLM 路由 ===")
     for t, target in router.describe_routing().items():
         print(f"  {t:11} -> {target}")
     print()
 
-    # 按 tier 切分成多个 batch，每 batch 最多 batch_size 个
+    # 按 tier 切分成多个 batch，每 batch 最多 batch_size 个。
+    # start_id 只是喂给 prompt 的建议编号，最终会在落盘前统一重排，保证全局唯一。
     tasks_args: list[tuple[str, int, int]] = []
     cur_id = 1
     for tier_label, total in SCHOOL_TIER_PLAN:
-        remaining = total
+        remaining = total * args.scale
         while remaining > 0:
             n = min(args.batch_size, remaining)
             tasks_args.append((tier_label, n, cur_id))
             cur_id += n
             remaining -= n
 
+    if args.limit_batches > 0:
+        tasks_args = tasks_args[: args.limit_batches]
+
     sem = asyncio.Semaphore(args.max_concurrency)
+    max_attempts = 4
 
     async def run_one(tier_label: str, n: int, start: int) -> list[CandidateProfile]:
         async with sem:
-            return await generate_personas_for_tier(router, tier_label, n, start)
+            await asyncio.sleep(random.uniform(0, 1.5))
+            # catch 异常 + 多次重试，绝不让单 batch 失败炸掉整个 gather
+            for attempt in range(max_attempts):
+                try:
+                    out = await generate_personas_for_tier(
+                        router, tier_label, n, start
+                    )
+                    if out:
+                        return out
+                except Exception as e:
+                    short = str(e).splitlines()[0][:90]
+                    print(f"  [ERR] {tier_label} 第 {attempt + 1} 次: {short}")
+                if attempt < max_attempts - 1:
+                    backoff = min(20.0, 4.0 * (2**attempt)) + random.uniform(0, 3)
+                    await asyncio.sleep(backoff)
+            print(f"  [GIVEUP] {tier_label}: {max_attempts} 次仍失败，本批放弃")
+            return []
 
-    print(f"开始生成 {len(tasks_args)} 个 batch...")
+    print(f"开始生成 {len(tasks_args)} 个 batch（目标 ~{sum(t[1] for t in tasks_args)} 人）...")
     results = await asyncio.gather(*[run_one(*t) for t in tasks_args])
     await router.close()
 
@@ -319,6 +370,13 @@ async def main(argv: list[str]) -> None:
         personas.extend(batch)
 
     raw = [p.model_dump(mode="json") for p in personas]
+
+    # 全局重排 candidate_id，保证唯一（scale 后各 batch 的 start_id 会重叠，
+    # 且 LLM 本就常忽略 start_id 建议编号）。用零填充位宽适配总量。
+    width = max(3, len(str(len(raw))))
+    for idx, item in enumerate(raw, start=1):
+        item["candidate_id"] = f"compete_{idx:0{width}d}"
+
     payload, triggers = _sanitize(raw)
 
     out_path = Path(args.out)

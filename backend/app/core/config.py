@@ -77,6 +77,17 @@ class Settings(BaseSettings):
     doubao_api_key: str = ""
     doubao_base_url: str = "https://ark.cn-beijing.volces.com/api/v3"
 
+    # === NVIDIA NIM（免费苦力池，121 开源模型，OpenAI 兼容，无积分制仅速率限制） ===
+    # 离线大规模生成 + sim 用它，摆脱 DeepSeek 官方 503。model 段用全名如 deepseek-ai/deepseek-v4-flash
+    nvidia_api_key: str = ""
+    nvidia_base_url: str = "https://integrate.api.nvidia.com/v1"
+
+    # === Azure OpenAI（可选，非标准 OpenAI 兼容：api-key header + deployment url） ===
+    # DeepSeek 官方频繁 503 过载，Azure OpenAI 作稳定备用。tier 里 model 段填 deployment name。
+    azure_endpoint: str = ""
+    azure_api_key: str = ""
+    azure_api_version: str = "2024-10-21"
+
     # ===== Tier 路由 =====
     # 格式: "provider_name:model_name"
     # 业务代码只关心 PRIMARY/SECONDARY/BACKGROUND 三档，

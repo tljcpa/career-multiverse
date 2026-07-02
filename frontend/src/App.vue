@@ -2,6 +2,7 @@
 // 根组件：纯路由 outlet + 背景星空层
 // 把星空背景做成全局共享，因为 Upload/Finetuning/Sandbox/Report 都需要"宇宙感"
 import StarField from '@/components/StarField.vue'
+import TriRoleNav from '@/components/TriRoleNav.vue'
 </script>
 
 <template>
@@ -11,10 +12,12 @@ import StarField from '@/components/StarField.vue'
 
     <!-- 顶部导航栏（仅显示当前阶段，非交互式） -->
     <header class="fixed top-0 left-0 right-0 z-50 px-8 py-4 flex items-center justify-between bg-space-bg/40 backdrop-blur-sm border-b border-white/5">
-      <div class="flex items-center gap-3">
-        <div class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse" />
-        <h1 class="text-lg font-semibold title-gradient">春招平行宇宙</h1>
-        <span class="text-xs text-ink-500 ml-2">Spring Recruitment Parallel Universe</span>
+      <div class="flex items-center gap-6">
+        <router-link to="/" class="flex items-center gap-3 no-underline">
+          <div class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse" />
+          <h1 class="text-lg font-semibold title-gradient">春招平行宇宙</h1>
+        </router-link>
+        <TriRoleNav />
       </div>
       <nav class="flex items-center gap-6 text-xs text-ink-300">
         <span :class="{ 'text-cyber-cyan': $route.name === 'upload' }">01 上传</span>
