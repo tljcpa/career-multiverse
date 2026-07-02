@@ -52,6 +52,10 @@ class SimSession:
     completed_real_sim_at: float = 0.0
     # 完整聚合结果（从 real_outcomes + 统计推断生成）
     aggregate_cache: Any = None
+    # 反事实关键变体的真实重跑结果缓存：key=(mutation_key, delta) → OutcomeAggregate
+    # 同一 sim_session 内评委反复调同一个 mutation（例如反复拖到 +15）不用重跑，
+    # 直接命中缓存；也避免面板来回切换时重复消耗 LLM 配额
+    counterfactual_cache: dict[tuple[str, float], Any] = field(default_factory=dict)
 
 
 class SessionStore:

@@ -5,7 +5,8 @@
 - /simulation/start：异步触发少量真 sim（N_REAL_SIMS=3 次），返回 session_id 立刻
 - /simulation/status：从 session 实时算进度（混合真实完成度 + 时间推算）
 - /simulation/aggregate：从 N 真 outcome 推断 1000 次聚合
-- /counterfactual/run：用线性插值（理由见 aggregator.py docstring）
+- /counterfactual/run：关键变体（project_strength / resume_quality）真实重跑 Multi-Agent sim 校准，
+  其余变体用线性插值扩展（理由见 aggregator.py docstring）
 - /hr/interview：调真 CompanyHRAgent，让评委亲耳听 LLM 实时输出
 - /companies：直接读种子 JSON
 """
@@ -44,6 +45,11 @@ from .aggregator import (
     company_offer_probability,
     offer_count_distribution,
 )
+from ..simulation.counterfactual import (
+    CounterfactualRunner,
+    mutation_project_boost,
+    mutation_resume_quality_boost,
+)
 from .schemas import (
     AggregateResponse,
     CandidateProfileResponse,
@@ -56,6 +62,7 @@ from .schemas import (
     HRInterviewRequest,
     HRInterviewResponse,
     MutationDelta,
+    OutcomeAggregate,
     ResumeSummary,
     SimSessionStatus,
     StartSimRequest,
@@ -786,6 +793,68 @@ async def get_aggregate(sim_session_id: str) -> AggregateResponse:
 # ============================================================
 
 
+# 真实重跑的关键 mutation：只对这两个维度真跑 Multi-Agent sim 校准，
+# 其余维度（overwork_tolerance / school_tier / risk_appetite）成本收益不划算，仍走估计插值。
+# 选它俩的理由：项目含金量 / 简历质量是候选人自己"改简历"能直接动的两个维度，
+# 也是评委最常在演示里拖的两个滑块，值得花真跑的成本换可信度。
+REAL_RERUN_KEYS = {"project_strength", "resume_quality"}
+# 真跑轮数：远小于 baseline 用的 runs_per_variant（评委请求里可能传到 2000），
+# 30 次是 CounterfactualRunner 默认值，兼顾统计意义和 demo 等待时间（约 30-60 秒一次）
+REAL_RERUN_RUNS = 30
+
+
+def _build_real_rerun_mutation(key: str, delta: float):
+    """按 mutation key 构造对应的真实 Mutation 对象（复用 counterfactual.py 的 apply 逻辑）。
+    delta 语义与 apply_counterfactual_estimate 一致：正负号决定升/降，绝对值是分值增量"""
+    if key == "project_strength":
+        return mutation_project_boost(delta=round(delta))
+    if key == "resume_quality":
+        return mutation_resume_quality_boost(delta=round(delta))
+    return None
+
+
+async def _get_or_run_real_variant(
+    sim_sess: Any,
+    user_sess: Any,
+    key: str,
+    delta: float,
+    label: str,
+):
+    """关键 mutation 的真实重跑，按 (key, delta) 缓存在 sim_session 里避免重复消耗 LLM 配额。
+    返回 schemas.OutcomeAggregate（与估计路径返回类型一致，前端无感切换）"""
+    cache_key = (key, delta)
+    cached = sim_sess.counterfactual_cache.get(cache_key)
+    if cached is not None:
+        # 命中缓存时只替换 label（同一 delta 不同请求里 label 文案可能不同）
+        return cached.model_copy(update={"label": label})
+
+    mutation = _build_real_rerun_mutation(key, delta)
+    if mutation is None or user_sess.primary_candidate is None:
+        return None
+
+    companies = _load_companies()
+    personas = _load_personas()
+    llm_router = get_router()
+    runner = CounterfactualRunner(
+        llm_router,
+        companies,
+        personas,
+        runs_per_variant=REAL_RERUN_RUNS,
+        max_concurrency=6,
+    )
+    raw_agg = await runner.run_mutation(user_sess.primary_candidate, mutation)
+    # counterfactual.py 的 OutcomeAggregate 和 schemas.py 字段一致，唯独 week_settled_distribution
+    # 那边是 dict[int, int]、这边是 dict[str, int]（JSON API 响应 key 必须是 str），转换时把 key 转 str
+    dumped = raw_agg.model_dump()
+    dumped["week_settled_distribution"] = {
+        str(k): v for k, v in dumped["week_settled_distribution"].items()
+    }
+    agg = OutcomeAggregate.model_validate(dumped)
+    agg = agg.model_copy(update={"label": label})
+    sim_sess.counterfactual_cache[cache_key] = agg
+    return agg
+
+
 @router.post("/counterfactual/run", response_model=CounterfactualReport)
 async def run_counterfactual(req: CounterfactualRequest) -> CounterfactualReport:
     store = get_session_store()
@@ -807,14 +876,24 @@ async def run_counterfactual(req: CounterfactualRequest) -> CounterfactualReport
         seen_keys[m.key] = m
 
     base_agg = aggregate_outcomes("原始（你的真实简历）", sim_sess.real_outcomes, sim_sess.total_runs)
+    user_sess = store.get_user(sim_sess.user_id)
 
     variants = [base_agg]
-    # 每个 mutation 一个变体
+    # 每个 mutation 一个变体：关键维度（project_strength / resume_quality）真实重跑校准，
+    # 其余维度用真实 baseline + 敏感度插值估计
     for m in req.mutations:
-        variants.append(
-            apply_counterfactual_estimate(base_agg, m.key, m.delta, m.label)
-        )
-    # 组合变体
+        real_variant = None
+        if m.key in REAL_RERUN_KEYS and user_sess is not None:
+            real_variant = await _get_or_run_real_variant(sim_sess, user_sess, m.key, m.delta, m.label)
+        if real_variant is not None:
+            variants.append(real_variant)
+        else:
+            variants.append(
+                apply_counterfactual_estimate(base_agg, m.key, m.delta, m.label)
+            )
+    # 组合变体（多个 mutation 同时生效）：目前只对单一关键维度做真实重跑，
+    # 组合场景成本更高（真跑一次只覆盖一个 mutation 的联合效应），仍用插值估计，
+    # 避免"标了真跑却其实是插值"的名实不符
     if len(req.mutations) > 1:
         combo = base_agg.model_copy()
         for m in req.mutations:
