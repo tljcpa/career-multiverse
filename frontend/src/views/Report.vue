@@ -87,7 +87,7 @@ const topDestination = computed(() => {
           <p class="text-cyber-cyan text-sm tracking-widest mb-2">SIMULATION REPORT</p>
           <h1 class="text-4xl font-bold title-gradient">你的平行春招</h1>
           <p class="text-ink-300 text-sm mt-2">
-            数字分身已在 49 家公司组成的招聘宇宙中完成 1000 次完整春招。
+            数字分身已在约 300 家公司组成的招聘宇宙中完成多次平行春招。
             以下是统计结论 + 反事实分析。
           </p>
         </div>
@@ -98,7 +98,7 @@ const topDestination = computed(() => {
       <p class="text-xs text-ink-500 mb-8 leading-relaxed max-w-4xl">
         本次基于 <span class="text-ink-300">3 次真实 LLM-Multi-Agent 全流程春招 sim</span> outcome，
         按统计 bootstrapping 扩展到 1000 个平行宇宙的预测分布。
-        每个 sim 含 49 公司 × 13 周招聘窗 × 200 名虚拟竞争者。
+        每个 sim 含约 300 公司 × 13 周招聘窗，从约 2000 人虚拟竞争者池中采样。
       </p>
 
       <!-- KPI 卡片：offer 率 + 签约率紧邻，避免"100% offer / 0% 薪资"反直觉 -->
