@@ -44,8 +44,18 @@ tmp/
 GITHUB-PAT-指引.md
 智联AI比赛官方详信息.txt
 backend/data/users/
-backend/data/sim_runs/
+# sim_runs/ 下大多数文件是一次性调试产物，不入库；但 git 若整目录排除，
+# 目录内任何文件的负规则（!）都不会生效，所以改成排除目录里的内容而不是目录本身，
+# 这样才能在下面精确放行 big_market_report_20260702_202612.json 这个运行时依赖
+backend/data/sim_runs/*
+# 例外：离线真跑报告，反事实关键变体（project_strength+15 / resume_quality-20）
+# 秒回缓存的数据源（见 backend/app/api/routes.py _OFFLINE_DEMO_REPORT_FILE），
+# 是运行时依赖而非一次性调试产物，必须入库，否则部署环境缺文件会静默退化成实时真跑
+!backend/data/sim_runs/big_market_report_20260702_202612.json
 /tmp/
 
 # 视频产物（mp4/webm/mp3，大文件，不进 git）
 backend/data/video/
+docs/submission/决赛评分标准与规则.md
+_*.md
+_*.txt

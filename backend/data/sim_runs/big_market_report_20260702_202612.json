@@ -1,0 +1,1124 @@
+{
+  "generated_at": "20260702_202612",
+  "market": {
+    "companies": 307,
+    "competitor_pool": 1947
+  },
+  "candidate": {
+    "name": "王明",
+    "school": "某 C9 院校",
+    "school_tier": "985_top",
+    "degree": "硕士",
+    "hidden_signals": {
+      "school_tier": "985_top",
+      "gpa_percentile": 75,
+      "project_strength": 78,
+      "internship_strength": 65,
+      "achievements_strength": 55,
+      "communication_score": 70,
+      "stress_tolerance": 70,
+      "overwork_tolerance": 60
+    },
+    "resume_quality": 80
+  },
+  "config": {
+    "n_runs": 30,
+    "concurrency": 10,
+    "competitors_per_sim": 50,
+    "target_n": 1000,
+    "seed": 20260701
+  },
+  "baseline_run_meta": {
+    "n_requested": 30,
+    "n_succeeded": 30,
+    "n_failed": 0,
+    "failures": [],
+    "concurrency": 10,
+    "competitors_per_sim": 50,
+    "total_wall_sec": 249.1,
+    "per_sim_sec": {
+      "min": 69.0,
+      "max": 90.3,
+      "mean": 79.2
+    }
+  },
+  "baseline_report": {
+    "label": "原始（王明·大市场）",
+    "n_real_sims": 30,
+    "aggregate": {
+      "label": "原始（王明·大市场）",
+      "n_runs": 1000,
+      "offer_rate": 0.9838709677419355,
+      "mean_offers": 5.333333333333333,
+      "mean_applications": 41.53333333333333,
+      "mean_interviews": 13.6,
+      "mean_salary_when_settled": 53.09134240603471,
+      "median_salary_when_settled": 53.06370519811289,
+      "settled_rate": 0.9838709677419355,
+      "destination_distribution": {
+        "声剧-γ": 242,
+        "鲸火-1": 177,
+        "云枢": 154,
+        "脉-3": 149,
+        "闪讯-α": 103,
+        "品易仓": 51,
+        "行云": 51,
+        "餐链云-7": 51,
+        "视界-Ω": 11,
+        "智驭云": 11
+      },
+      "week_settled_distribution": {
+        "6": 10,
+        "7": 63,
+        "8": 268,
+        "9": 357,
+        "10": 242,
+        "11": 54,
+        "12": 6
+      }
+    },
+    "offer_count_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 2,
+      "3": 40,
+      "4": 171,
+      "5": 360,
+      "6": 299,
+      "7": 108,
+      "8": 20
+    },
+    "company_offer_probability": [
+      {
+        "company_code": "声剧-γ",
+        "probability": 1.0
+      },
+      {
+        "company_code": "鲸火-1",
+        "probability": 0.9666666666666667
+      },
+      {
+        "company_code": "云枢",
+        "probability": 0.9
+      },
+      {
+        "company_code": "脉-3",
+        "probability": 0.8666666666666667
+      },
+      {
+        "company_code": "闪讯-α",
+        "probability": 0.6
+      },
+      {
+        "company_code": "品易仓",
+        "probability": 0.3
+      },
+      {
+        "company_code": "餐链云-7",
+        "probability": 0.3
+      },
+      {
+        "company_code": "行云",
+        "probability": 0.2
+      },
+      {
+        "company_code": "视界-Ω",
+        "probability": 0.06666666666666667
+      },
+      {
+        "company_code": "智驭云",
+        "probability": 0.06666666666666667
+      },
+      {
+        "company_code": "蓝鲸",
+        "probability": 0.03333333333333333
+      },
+      {
+        "company_code": "闪鱼",
+        "probability": 0.03333333333333333
+      },
+      {
+        "company_code": "短-1",
+        "probability": 0.0
+      },
+      {
+        "company_code": "电-β",
+        "probability": 0.0
+      },
+      {
+        "company_code": "云视",
+        "probability": 0.0
+      }
+    ],
+    "acceptance_week_timeline": [
+      {
+        "week": 0,
+        "count": 0
+      },
+      {
+        "week": 1,
+        "count": 0
+      },
+      {
+        "week": 2,
+        "count": 0
+      },
+      {
+        "week": 3,
+        "count": 0
+      },
+      {
+        "week": 4,
+        "count": 0
+      },
+      {
+        "week": 5,
+        "count": 0
+      },
+      {
+        "week": 6,
+        "count": 8
+      },
+      {
+        "week": 7,
+        "count": 59
+      },
+      {
+        "week": 8,
+        "count": 221
+      },
+      {
+        "week": 9,
+        "count": 396
+      },
+      {
+        "week": 10,
+        "count": 249
+      },
+      {
+        "week": 11,
+        "count": 62
+      },
+      {
+        "week": 12,
+        "count": 5
+      }
+    ],
+    "raw_outcomes": [
+      {
+        "sim_id": "base#0",
+        "total_applications": 40,
+        "total_interviews": 9,
+        "total_offers": 3,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#9",
+        "total_applications": 43,
+        "total_interviews": 10,
+        "total_offers": 4,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#3",
+        "total_applications": 41,
+        "total_interviews": 10,
+        "total_offers": 4,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#4",
+        "total_applications": 36,
+        "total_interviews": 13,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#1",
+        "total_applications": 41,
+        "total_interviews": 12,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#2",
+        "total_applications": 38,
+        "total_interviews": 16,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#6",
+        "total_applications": 46,
+        "total_interviews": 14,
+        "total_offers": 5,
+        "final_destination_company": "鲸火-1",
+        "final_salary_wan": 51.0,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#5",
+        "total_applications": 38,
+        "total_interviews": 16,
+        "total_offers": 6,
+        "final_destination_company": "闪鱼",
+        "final_salary_wan": 54.75,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#8",
+        "total_applications": 47,
+        "total_interviews": 20,
+        "total_offers": 8,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#7",
+        "total_applications": 43,
+        "total_interviews": 17,
+        "total_offers": 7,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#11",
+        "total_applications": 42,
+        "total_interviews": 11,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#10",
+        "total_applications": 43,
+        "total_interviews": 13,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#16",
+        "total_applications": 38,
+        "total_interviews": 13,
+        "total_offers": 5,
+        "final_destination_company": "鲸火-1",
+        "final_salary_wan": 51.0,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#18",
+        "total_applications": 35,
+        "total_interviews": 12,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#14",
+        "total_applications": 42,
+        "total_interviews": 15,
+        "total_offers": 6,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#12",
+        "total_applications": 43,
+        "total_interviews": 15,
+        "total_offers": 6,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#13",
+        "total_applications": 39,
+        "total_interviews": 14,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#17",
+        "total_applications": 41,
+        "total_interviews": 14,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#15",
+        "total_applications": 40,
+        "total_interviews": 18,
+        "total_offers": 6,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#19",
+        "total_applications": 42,
+        "total_interviews": 15,
+        "total_offers": 6,
+        "final_destination_company": "鲸火-1",
+        "final_salary_wan": 51.0,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#20",
+        "total_applications": 42,
+        "total_interviews": 11,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#21",
+        "total_applications": 45,
+        "total_interviews": 14,
+        "total_offers": 6,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#23",
+        "total_applications": 47,
+        "total_interviews": 14,
+        "total_offers": 6,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#24",
+        "total_applications": 42,
+        "total_interviews": 11,
+        "total_offers": 4,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#26",
+        "total_applications": 46,
+        "total_interviews": 15,
+        "total_offers": 5,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#22",
+        "total_applications": 45,
+        "total_interviews": 14,
+        "total_offers": 6,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#25",
+        "total_applications": 44,
+        "total_interviews": 17,
+        "total_offers": 7,
+        "final_destination_company": "行云",
+        "final_salary_wan": 56.25,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#28",
+        "total_applications": 38,
+        "total_interviews": 12,
+        "total_offers": 5,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#27",
+        "total_applications": 41,
+        "total_interviews": 14,
+        "total_offers": 6,
+        "final_destination_company": "鲸火-1",
+        "final_salary_wan": 51.0,
+        "final_week_when_settled": 9
+      },
+      {
+        "sim_id": "base#29",
+        "total_applications": 38,
+        "total_interviews": 9,
+        "total_offers": 4,
+        "final_destination_company": "声剧-γ",
+        "final_salary_wan": 52.5,
+        "final_week_when_settled": 9
+      }
+    ]
+  },
+  "cf_project_plus15": {
+    "run_meta": {
+      "n_requested": 15,
+      "n_succeeded": 15,
+      "n_failed": 0,
+      "failures": [],
+      "concurrency": 10,
+      "competitors_per_sim": 50,
+      "total_wall_sec": 178.9,
+      "per_sim_sec": {
+        "min": 82.8,
+        "max": 95.5,
+        "mean": 89.2
+      }
+    },
+    "report": {
+      "label": "项目含金量 +15",
+      "n_real_sims": 15,
+      "aggregate": {
+        "label": "项目含金量 +15",
+        "n_runs": 1000,
+        "offer_rate": 0.96875,
+        "mean_offers": 9.4,
+        "mean_applications": 42.666666666666664,
+        "mean_interviews": 32.2,
+        "mean_salary_when_settled": 62.333993461209545,
+        "median_salary_when_settled": 62.33068426606846,
+        "settled_rate": 0.96875,
+        "destination_distribution": {
+          "津-鼎": 269,
+          "闪讯-α": 101,
+          "云枢": 101,
+          "声剧-γ": 98,
+          "脉-3": 94,
+          "快达-β": 91,
+          "鲸火-1": 91,
+          "视界-Ω": 74,
+          "行云": 47,
+          "品易仓": 34
+        },
+        "week_settled_distribution": {
+          "6": 7,
+          "7": 54,
+          "8": 249,
+          "9": 376,
+          "10": 251,
+          "11": 55,
+          "12": 8
+        }
+      },
+      "offer_count_distribution": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 7,
+        "6": 31,
+        "7": 77,
+        "8": 175,
+        "9": 245,
+        "10": 237,
+        "11": 135,
+        "12": 67,
+        "13": 22,
+        "14": 4
+      },
+      "company_offer_probability": [
+        {
+          "company_code": "闪讯-α",
+          "probability": 1.0
+        },
+        {
+          "company_code": "津-鼎",
+          "probability": 1.0
+        },
+        {
+          "company_code": "云枢",
+          "probability": 1.0
+        },
+        {
+          "company_code": "脉-3",
+          "probability": 0.9333333333333333
+        },
+        {
+          "company_code": "声剧-γ",
+          "probability": 0.9333333333333333
+        },
+        {
+          "company_code": "鲸火-1",
+          "probability": 0.8666666666666667
+        },
+        {
+          "company_code": "视界-Ω",
+          "probability": 0.7333333333333333
+        },
+        {
+          "company_code": "快达-β",
+          "probability": 0.6666666666666666
+        },
+        {
+          "company_code": "行云",
+          "probability": 0.4666666666666667
+        },
+        {
+          "company_code": "品易仓",
+          "probability": 0.3333333333333333
+        },
+        {
+          "company_code": "餐链云-7",
+          "probability": 0.3333333333333333
+        },
+        {
+          "company_code": "蓝鲸",
+          "probability": 0.2
+        },
+        {
+          "company_code": "潮物集",
+          "probability": 0.2
+        },
+        {
+          "company_code": "镜-α",
+          "probability": 0.2
+        },
+        {
+          "company_code": "云鲸-π",
+          "probability": 0.2
+        }
+      ],
+      "acceptance_week_timeline": [
+        {
+          "week": 0,
+          "count": 0
+        },
+        {
+          "week": 1,
+          "count": 0
+        },
+        {
+          "week": 2,
+          "count": 0
+        },
+        {
+          "week": 3,
+          "count": 0
+        },
+        {
+          "week": 4,
+          "count": 0
+        },
+        {
+          "week": 5,
+          "count": 1
+        },
+        {
+          "week": 6,
+          "count": 2
+        },
+        {
+          "week": 7,
+          "count": 69
+        },
+        {
+          "week": 8,
+          "count": 232
+        },
+        {
+          "week": 9,
+          "count": 409
+        },
+        {
+          "week": 10,
+          "count": 229
+        },
+        {
+          "week": 11,
+          "count": 54
+        },
+        {
+          "week": 12,
+          "count": 4
+        }
+      ],
+      "raw_outcomes": [
+        {
+          "sim_id": "cf_proj15#9",
+          "total_applications": 40,
+          "total_interviews": 31,
+          "total_offers": 8,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#4",
+          "total_applications": 42,
+          "total_interviews": 33,
+          "total_offers": 9,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#0",
+          "total_applications": 42,
+          "total_interviews": 26,
+          "total_offers": 7,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#8",
+          "total_applications": 41,
+          "total_interviews": 32,
+          "total_offers": 10,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#5",
+          "total_applications": 44,
+          "total_interviews": 37,
+          "total_offers": 10,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#3",
+          "total_applications": 45,
+          "total_interviews": 36,
+          "total_offers": 11,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#1",
+          "total_applications": 47,
+          "total_interviews": 34,
+          "total_offers": 11,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#6",
+          "total_applications": 45,
+          "total_interviews": 35,
+          "total_offers": 8,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#2",
+          "total_applications": 44,
+          "total_interviews": 35,
+          "total_offers": 12,
+          "final_destination_company": "声剧-γ",
+          "final_salary_wan": 52.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#7",
+          "total_applications": 46,
+          "total_interviews": 37,
+          "total_offers": 11,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#10",
+          "total_applications": 39,
+          "total_interviews": 21,
+          "total_offers": 7,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#11",
+          "total_applications": 39,
+          "total_interviews": 29,
+          "total_offers": 8,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#14",
+          "total_applications": 41,
+          "total_interviews": 33,
+          "total_offers": 9,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#13",
+          "total_applications": 41,
+          "total_interviews": 31,
+          "total_offers": 10,
+          "final_destination_company": "津-鼎",
+          "final_salary_wan": 60.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_proj15#12",
+          "total_applications": 44,
+          "total_interviews": 33,
+          "total_offers": 10,
+          "final_destination_company": "快达-β",
+          "final_salary_wan": 67.5,
+          "final_week_when_settled": 9
+        }
+      ]
+    },
+    "candidate_project_strength": 93
+  },
+  "cf_resume_minus20": {
+    "run_meta": {
+      "n_requested": 15,
+      "n_succeeded": 15,
+      "n_failed": 0,
+      "failures": [],
+      "concurrency": 10,
+      "competitors_per_sim": 50,
+      "total_wall_sec": 129.8,
+      "per_sim_sec": {
+        "min": 39.3,
+        "max": 71.3,
+        "mean": 63.4
+      }
+    },
+    "report": {
+      "label": "简历质量 -20",
+      "n_real_sims": 15,
+      "aggregate": {
+        "label": "简历质量 -20",
+        "n_runs": 1000,
+        "offer_rate": 0.96875,
+        "mean_offers": 2.8666666666666667,
+        "mean_applications": 43.86666666666667,
+        "mean_interviews": 6.333333333333333,
+        "mean_salary_when_settled": 47.87763964220489,
+        "median_salary_when_settled": 47.88762022743952,
+        "settled_rate": 0.96875,
+        "destination_distribution": {
+          "鲸火-1": 386,
+          "脉-3": 277,
+          "云枢": 198,
+          "品易仓": 99,
+          "河-商": 20,
+          "智联云帆": 20
+        },
+        "week_settled_distribution": {
+          "3": 2,
+          "4": 24,
+          "5": 27,
+          "6": 39,
+          "7": 103,
+          "8": 217,
+          "9": 311,
+          "10": 195,
+          "11": 69,
+          "12": 13
+        }
+      },
+      "offer_count_distribution": {
+        "0": 9,
+        "1": 86,
+        "2": 272,
+        "3": 375,
+        "4": 200,
+        "5": 54,
+        "6": 3,
+        "7": 1,
+        "8": 0
+      },
+      "company_offer_probability": [
+        {
+          "company_code": "鲸火-1",
+          "probability": 0.9333333333333333
+        },
+        {
+          "company_code": "脉-3",
+          "probability": 0.8
+        },
+        {
+          "company_code": "云枢",
+          "probability": 0.6666666666666666
+        },
+        {
+          "company_code": "品易仓",
+          "probability": 0.3333333333333333
+        },
+        {
+          "company_code": "河-商",
+          "probability": 0.06666666666666667
+        },
+        {
+          "company_code": "智联云帆",
+          "probability": 0.06666666666666667
+        },
+        {
+          "company_code": "短-1",
+          "probability": 0.0
+        },
+        {
+          "company_code": "电-β",
+          "probability": 0.0
+        },
+        {
+          "company_code": "云视",
+          "probability": 0.0
+        },
+        {
+          "company_code": "蓝鲸",
+          "probability": 0.0
+        },
+        {
+          "company_code": "星播-2",
+          "probability": 0.0
+        },
+        {
+          "company_code": "闪讯-α",
+          "probability": 0.0
+        },
+        {
+          "company_code": "云播-3",
+          "probability": 0.0
+        },
+        {
+          "company_code": "电-π",
+          "probability": 0.0
+        },
+        {
+          "company_code": "短-声",
+          "probability": 0.0
+        }
+      ],
+      "acceptance_week_timeline": [
+        {
+          "week": 0,
+          "count": 0
+        },
+        {
+          "week": 1,
+          "count": 0
+        },
+        {
+          "week": 2,
+          "count": 1
+        },
+        {
+          "week": 3,
+          "count": 4
+        },
+        {
+          "week": 4,
+          "count": 21
+        },
+        {
+          "week": 5,
+          "count": 25
+        },
+        {
+          "week": 6,
+          "count": 48
+        },
+        {
+          "week": 7,
+          "count": 94
+        },
+        {
+          "week": 8,
+          "count": 234
+        },
+        {
+          "week": 9,
+          "count": 301
+        },
+        {
+          "week": 10,
+          "count": 198
+        },
+        {
+          "week": 11,
+          "count": 71
+        },
+        {
+          "week": 12,
+          "count": 3
+        }
+      ],
+      "raw_outcomes": [
+        {
+          "sim_id": "cf_resume-20#7",
+          "total_applications": 30,
+          "total_interviews": 3,
+          "total_offers": 1,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 5
+        },
+        {
+          "sim_id": "cf_resume-20#1",
+          "total_applications": 46,
+          "total_interviews": 7,
+          "total_offers": 3,
+          "final_destination_company": "脉-3",
+          "final_salary_wan": 39.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#3",
+          "total_applications": 46,
+          "total_interviews": 5,
+          "total_offers": 2,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#2",
+          "total_applications": 45,
+          "total_interviews": 6,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#5",
+          "total_applications": 45,
+          "total_interviews": 7,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#0",
+          "total_applications": 46,
+          "total_interviews": 9,
+          "total_offers": 4,
+          "final_destination_company": "脉-3",
+          "final_salary_wan": 39.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#6",
+          "total_applications": 48,
+          "total_interviews": 8,
+          "total_offers": 4,
+          "final_destination_company": "脉-3",
+          "final_salary_wan": 39.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#4",
+          "total_applications": 44,
+          "total_interviews": 8,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#9",
+          "total_applications": 47,
+          "total_interviews": 9,
+          "total_offers": 4,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#8",
+          "total_applications": 41,
+          "total_interviews": 6,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#10",
+          "total_applications": 47,
+          "total_interviews": 6,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#13",
+          "total_applications": 39,
+          "total_interviews": 4,
+          "total_offers": 2,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 7
+        },
+        {
+          "sim_id": "cf_resume-20#14",
+          "total_applications": 42,
+          "total_interviews": 6,
+          "total_offers": 3,
+          "final_destination_company": "脉-3",
+          "final_salary_wan": 39.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#11",
+          "total_applications": 44,
+          "total_interviews": 5,
+          "total_offers": 2,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        },
+        {
+          "sim_id": "cf_resume-20#12",
+          "total_applications": 48,
+          "total_interviews": 6,
+          "total_offers": 3,
+          "final_destination_company": "鲸火-1",
+          "final_salary_wan": 51.0,
+          "final_week_when_settled": 9
+        }
+      ]
+    },
+    "candidate_resume_quality": 60
+  },
+  "llm_usage": {
+    "calls": 4767,
+    "input": 5198757,
+    "output": 499197
+  }
+}

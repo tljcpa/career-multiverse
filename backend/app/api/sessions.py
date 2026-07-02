@@ -32,6 +32,12 @@ class UserSession:
     #      / communication_score / gpa_percentile / school_tier
     # value: 一句自然语言理由
     evaluation_reasoning: dict[str, str] = field(default_factory=dict)
+    # 是否走"使用 Demo 数据"路径创建（内置王明·C9 计算机硕士，无真简历上传）。
+    # 用途：/simulation/start 时据此判断能否把离线真跑过的反事实结果预置进
+    # counterfactual_cache——只有这个默认 persona 的 hidden_signals 与离线报告
+    # (big_market_report_*.json) 里的候选人完全一致，预置才是"真跑数据搬过来"
+    # 而不是张冠李戴。真实上传简历的用户 hidden_signals 因人而异，不能复用。
+    is_demo_default: bool = False
 
 
 @dataclass

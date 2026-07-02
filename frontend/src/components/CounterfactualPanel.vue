@@ -57,6 +57,28 @@ const report = ref<CounterfactualReport | null>(null)
 const loading = ref(false)
 let debounceTimer = 0
 
+// 关键变体（project_strength / resume_quality）后端会真实重跑 Multi-Agent sim 校准，
+// 命中缓存（demo persona 预置的离线真跑结果）时 <20ms 秒回，
+// 未命中时是现场真跑 30 次，约 7-8 分钟——必须给出等待反馈，不能静默 hang。
+// 300ms 内没返回就判定"这次是实时真跑"，切到长等待文案；
+// 300ms 内就返回说明命中缓存，用户几乎看不到 loading 态，无需特殊处理。
+const REAL_RERUN_KEYS = new Set(['project_strength', 'resume_quality'])
+// 与后端 REAL_RERUN_RUNS 一致（backend/app/api/routes.py），仅用于文案展示
+const REAL_RERUN_RUNS = 30
+const LONG_WAIT_THRESHOLD_MS = 300
+
+const isLongWait = ref(false)
+const waitSeconds = ref(0)
+let longWaitTimer = 0
+let tickTimer = 0
+
+const loadingText = computed(() => {
+  if (!isLongWait.value) {
+    return '正在计算…'
+  }
+  return `正在真实重跑 ${REAL_RERUN_RUNS} 次模拟校准这个变体，预计需要几分钟，请稍候…（已等待 ${waitSeconds.value}s）`
+})
+
 const mutations = computed<MutationDelta[]>(() => {
   return sliders
     .filter((s) => values.value[s.key] !== 0)
@@ -67,16 +89,44 @@ const mutations = computed<MutationDelta[]>(() => {
     }))
 })
 
+function clearWaitTimers() {
+  if (longWaitTimer) {
+    window.clearTimeout(longWaitTimer)
+    longWaitTimer = 0
+  }
+  if (tickTimer) {
+    window.clearInterval(tickTimer)
+    tickTimer = 0
+  }
+}
+
 async function fetchReport() {
   // 空 mutations 不调 backend：所有 slider 都在 0 时调用没意义，且 backend min_length=1 会 422
   if (mutations.value.length === 0) {
     return
   }
+  // 防止上一次未完成的请求留下的计时器和这一次打架（快速连续拖动滑块时可能发生）
+  clearWaitTimers()
   loading.value = true
+  isLongWait.value = false
+  waitSeconds.value = 0
+  // 只有滑动了真实重跑维度（project_strength / resume_quality）才可能触发几分钟的实时真跑；
+  // 其余维度（school_tier 等）永远走插值估计，秒回，不需要长等待文案
+  const mayRealRerun = mutations.value.some((m) => REAL_RERUN_KEYS.has(m.key))
+  if (mayRealRerun) {
+    longWaitTimer = window.setTimeout(() => {
+      isLongWait.value = true
+      tickTimer = window.setInterval(() => {
+        waitSeconds.value += 1
+      }, 1000)
+    }, LONG_WAIT_THRESHOLD_MS)
+  }
   try {
     report.value = await runCounterfactual(session.simSessionId ?? 'mock_sim', mutations.value)
   } finally {
     loading.value = false
+    isLongWait.value = false
+    clearWaitTimers()
   }
 }
 
@@ -245,7 +295,20 @@ const compareVariant = computed(() => {
       </div>
     </div>
 
-    <div v-if="loading" class="text-[10px] text-ink-500 mt-3">computing...</div>
+    <!-- loading 反馈：命中缓存 <20ms 一闪而过；未命中缓存的实时真跑要几分钟，
+         必须持续给反馈，不能让评委以为卡死了 -->
+    <div
+      v-if="loading"
+      class="flex items-center gap-2.5 mt-4 px-3 py-2.5 rounded panel-glass"
+      :class="isLongWait ? 'border border-cyber-purple/30' : 'border border-white/5'"
+    >
+      <span
+        class="inline-block w-3.5 h-3.5 rounded-full border-2 border-cyber-cyan/30 border-t-cyber-cyan animate-spin shrink-0"
+      />
+      <span class="text-xs" :class="isLongWait ? 'text-cyber-purple' : 'text-ink-500'">
+        {{ loadingText }}
+      </span>
+    </div>
   </div>
 </template>
 
