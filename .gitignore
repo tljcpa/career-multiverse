@@ -52,6 +52,9 @@ backend/data/sim_runs/*
 # 秒回缓存的数据源（见 backend/app/api/routes.py _OFFLINE_DEMO_REPORT_FILE），
 # 是运行时依赖而非一次性调试产物，必须入库，否则部署环境缺文件会静默退化成实时真跑
 !backend/data/sim_runs/big_market_report_20260702_202612.json
+# 例外：宝妈绝境案例三档真跑合并报告（决赛主讲段 4.6 / PPT 绝境案例页的数据源，
+# 真数据未美化，基线/只改包装/真补硬实力各真跑 8 次 raw offer 全为 0），入库存证
+!backend/data/sim_runs/mom_comeback_report_MERGED.json
 /tmp/
 
 # 视频产物（mp4/webm/mp3，大文件，不进 git）
