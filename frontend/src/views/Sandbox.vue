@@ -208,7 +208,7 @@ function onCompanyClick(c: Company) {
 
       <!-- 加载占位 -->
       <div v-else class="absolute inset-0 flex items-center justify-center text-cyber-cyan">
-        正在装配 49 家虚拟公司...
+        正在装配约 300 家虚拟公司...
       </div>
 
       <!-- 顶部时间标尺 -->
@@ -256,7 +256,7 @@ function onCompanyClick(c: Company) {
           {{ appliedCompanies.length }} 次投递 · {{ eventsThisWeek.length }} 个本周事件
         </div>
         <button class="btn-primary text-sm" @click="goToReport">
-          查看 1000 次平行宇宙报告 →
+          查看平行宇宙报告 →
         </button>
       </div>
     </div>

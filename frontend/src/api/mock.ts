@@ -91,8 +91,8 @@ export async function mockSimStatus(): Promise<SimSessionStatus> {
   const stageMsg: Record<SimSessionStatus['stage'], string> = {
     queued: '排队中...',
     extracting: '校准你的求职画像（学校档 / 经历 / 沟通）',
-    matching_market: '扫描 49 家公司招聘门槛，定位你的候选池',
-    sim_running: '并行启动 1000 个春招宇宙（49 公司 × 13 周招聘窗 × 蒙特卡洛）',
+    matching_market: '扫描约 300 家公司招聘门槛，定位你的候选池',
+    sim_running: '并行启动春招宇宙（约 300 公司 × 13 周招聘窗 × 蒙特卡洛）',
     simulating: '化身已进场，正在跑 1000 个春招宇宙',
     done: '所有平行宇宙已就绪'
   }

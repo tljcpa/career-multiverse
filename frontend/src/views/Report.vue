@@ -85,7 +85,7 @@ const topDestination = computed(() => {
       <div class="flex items-end justify-between mb-3">
         <div>
           <p class="text-cyber-cyan text-sm tracking-widest mb-2">SIMULATION REPORT</p>
-          <h1 class="text-4xl font-bold title-gradient">你的 1000 次平行春招</h1>
+          <h1 class="text-4xl font-bold title-gradient">你的平行春招</h1>
           <p class="text-ink-300 text-sm mt-2">
             数字分身已在 49 家公司组成的招聘宇宙中完成 1000 次完整春招。
             以下是统计结论 + 反事实分析。

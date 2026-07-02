@@ -98,12 +98,12 @@ function skipDemo() {
       <div class="text-center mb-12">
         <p class="text-cyber-cyan text-sm tracking-widest mb-3">智联招聘 · 2026 春招 AI 创新大赛</p>
         <h1 class="text-5xl md:text-6xl font-bold title-gradient mb-4 leading-tight">
-          上传你的简历<br />让 AI 帮你跑 1000 次春招
+          上传你的简历<br />让 AI 帮你跑一遍平行春招
         </h1>
         <p class="text-ink-300 text-lg max-w-2xl mx-auto">
           LLM 一次性读完你的简历，输出五维内部画像 + 每维评分理由，然后让数字分身进入
-          49 家虚构公司组成的招聘宇宙，经历完整春招——投递、笔试、面试、谈薪。
-          统计告诉你：1000 个平行宇宙里，你最可能去哪里、能拿多少、哪一步是关键岔路。
+          约 300 家虚构公司组成的招聘宇宙，经历完整春招——投递、笔试、面试、谈薪。
+          统计告诉你：在平行宇宙里，你最可能去哪里、能拿多少、哪一步是关键岔路。
         </p>
       </div>
 
@@ -201,7 +201,7 @@ function skipDemo() {
         <div class="panel-glass p-5">
           <div class="text-cyber-purple text-3xl font-mono mb-2">B</div>
           <div class="text-ink-100 font-semibold mb-1">沙盘推演</div>
-          <div class="text-xs text-ink-300">化身在 49 家虚构公司的春招宇宙中跑出 1000 个平行结局</div>
+          <div class="text-xs text-ink-300">化身在约 300 家虚构公司的春招宇宙中跑出多个平行结局</div>
         </div>
         <div class="panel-glass p-5">
           <div class="text-cyber-pink text-3xl font-mono mb-2">C</div>

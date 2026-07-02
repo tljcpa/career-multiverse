@@ -566,7 +566,7 @@ defineExpose({
         <p class="text-ink-500 text-xs mt-3">
           演示其他功能不受影响——请直接进入
           <router-link to="/report" class="text-cyber-cyan underline">报告页</router-link>
-          查看 1000 次平行春招的统计结论。
+          查看平行春招的统计结论。
         </p>
       </div>
     </div>
