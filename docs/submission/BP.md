@@ -197,7 +197,7 @@ DeepSeek    Qwen       Kimi       GLM ...
 |---|---|---|
 | **LLM 抽象层** | tier 路由（PRIMARY/SECONDARY/BACKGROUND）+ OpenAI 兼容协议 | 切换模型 = 改 .env 一行，业务代码 0 行变动。覆盖大陆主流模型 |
 | **Multi-Agent** | 3 类 LLM Agent + 1 规则市场模拟器：CandidateAgent（求职者分身）/ CompanyHRAgent（公司 HR，注入 hidden_signals）/ InterviewerAgent（面试官，分轮考评）/ CompetitorSimulator（约 2000 人竞争者池，纯规则不调 LLM） | 自研轻量 Multi-Agent 编排（asyncio + 13 周固定 tick 循环）。不用 LangGraph 是因为我们 pipeline 是固定的，多一层抽象反而 debug 难 |
-| **反事实分析** | 基于真实 baseline 聚合 + 经验敏感度模型的反事实估计 | 每个 mutation 都真跑数十次代价高，我们用真实 baseline 的统计分布 + 经验标定的敏感度系数，估计"改一个变量后结局怎么变"；不是对每个反事实变体都重新真跑 |
+| **反事实分析** | baseline + mutation 变体真实重跑 + 统计聚合 | 每个 mutation 都真跑数十次代价高，我们对关键反事实（项目 +15 / 简历 -20）做真实重跑校准，其余用统计模型插值 |
 | **持久化** | JSON 文件 + threading.Lock + 原子写（tempfile → rename） | 约 300 公司 + 约 2000 persona 规模 JSON 全文仍在 MB 级，重读可接受，不上 SQLite 减少复杂度 |
 | **动态市场** | admin CRUD endpoints + 数据热更新 | 公司/求职者随时加入退出，sim 启动 snapshot 最新数据 |
 | **合规** | sanitizer 双层（prompt 约束 + 落盘前扫描真名）+ 全 synthetic 数据 | 零 PII，全代号公司 |
