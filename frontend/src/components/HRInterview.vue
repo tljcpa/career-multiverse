@@ -93,7 +93,6 @@ function scrollDown() {
             <span class="text-xs text-ink-500">{{ company.size_label }} · {{ company.headquarters_city }}</span>
           </div>
           <h3 class="text-2xl font-bold text-ink-100">{{ company.code_name }}</h3>
-          <p class="text-xs text-ink-500 mt-1">{{ company.inspired_by_hint }}</p>
         </div>
         <button class="text-ink-300 hover:text-cyber-pink text-2xl leading-none px-2" @click="emit('close')" aria-label="关闭对话框">
           ×

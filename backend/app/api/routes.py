@@ -1194,9 +1194,15 @@ async def get_coaching(user_id: str) -> CoachingResponse:
 
 @router.get("/companies")
 async def list_companies() -> list[dict]:
-    """返回公司列表。前端类型 Company[]"""
+    """返回公司列表。前端类型 Company[]
+
+    inspired_by_hint 是内部建模溯源字段（指纹级、可反推真公司），
+    合规红线要求绝不出公开 API，这里用 exclude 强制不序列化。"""
     companies = _load_companies()
-    return [c.model_dump(mode="json") for c in companies]
+    return [
+        c.model_dump(mode="json", exclude={"inspired_by_hint"})
+        for c in companies
+    ]
 
 
 # ============================================================
