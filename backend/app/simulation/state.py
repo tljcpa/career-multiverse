@@ -198,7 +198,7 @@ def init_sim_state(
     num_competitors: int = 30,
     rng: random.Random | None = None,
 ) -> SimulationState:
-    """初始化 sim 状态。从 200 个候选人池里抽 num_competitors 个作为本次 sim 的竞争者"""
+    """初始化 sim 状态。从竞争者分身池（当前 1947 人）里抽 num_competitors 个作为本次 sim 的竞争者"""
     r = rng if rng is not None else random.Random()
     selected_competitors = r.sample(
         competitor_pool, k=min(num_competitors, len(competitor_pool))

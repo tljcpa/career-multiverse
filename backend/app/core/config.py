@@ -120,11 +120,11 @@ class Settings(BaseSettings):
     # demo 时可降到 200 提速。这里默认 1000，运行时可覆盖
     default_simulation_runs: int = 1000
 
-    # 沙盘中虚拟公司数量。50 是兼顾"有代表性"和"模拟成本"的折中
-    virtual_companies_count: int = 50
-
-    # 沙盘中其他求职者分身数量。模拟竞争压力，但不能太多否则成本爆炸
-    competitor_personas_count: int = 200
+    # 注：虚拟公司数量 / 竞争者分身池大小由 backend/data 下的静态数据集实际
+    # 规模决定（companies_v1.json 307 家、competitors_v1.json 1947 人），
+    # 不是运行期可调参数，故此处不再放 virtual_companies_count /
+    # competitor_personas_count 这两个从未被引用的旧配置项（曾是 50/200，
+    # 对应早期小数据集，数据集扩容后成了死配置，删除以免误导）。
 
 
 @lru_cache(maxsize=1)

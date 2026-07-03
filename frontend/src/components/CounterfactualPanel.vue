@@ -176,6 +176,10 @@ const compareVariant = computed(() => {
         <p class="text-xs text-ink-500 mt-1">
           如果你的简历不一样，1000 个平行宇宙会怎么变？
         </p>
+        <p class="text-[11px] text-ink-500 mt-1">
+          <span class="text-cyber-cyan">● 真实重跑</span>：简历质量 / 项目含金量，后端真实重跑 Multi-Agent sim 校准；
+          <span class="text-ink-400">○ 插值估计</span>：学校等级等其余维度，秒回但为估计值，非真实重跑
+        </p>
       </div>
       <button class="btn-ghost text-xs" @click="resetSliders">重置</button>
     </div>
@@ -186,6 +190,12 @@ const compareVariant = computed(() => {
         <div class="flex items-baseline justify-between mb-1.5">
           <div>
             <span class="text-sm text-ink-100 font-semibold">{{ s.title }}</span>
+            <span
+              class="text-[10px] ml-2 px-1.5 py-0.5 rounded"
+              :class="REAL_RERUN_KEYS.has(s.key) ? 'text-cyber-cyan bg-cyber-cyan/10' : 'text-ink-400 bg-white/5'"
+            >
+              {{ REAL_RERUN_KEYS.has(s.key) ? '真实重跑' : '插值估计' }}
+            </span>
             <span class="text-xs text-ink-500 ml-2">{{ s.desc }}</span>
           </div>
           <span

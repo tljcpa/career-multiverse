@@ -62,6 +62,19 @@ function restart() {
   router.push('/upload')
 }
 
+// 数据来源文案区分：demo persona 走离线预置（真跑 30 次校准），后端在
+// aggregate_response.primary_aggregate.label 里会明示"（离线真跑 N 次校准）"
+// （见 backend/app/api/routes.py::_load_offline_demo_baseline）；
+// 非 demo 用户是现场实时 3 次真跑 + 统计 bootstrapping 外推到 1000。
+// 不用单独加后端字段——label 已经带了这个信号，前端只需要解析它，
+// 避免"3 次"和"30 次"两个数字在同一处文案里打架，给评委含糊口径。
+const offlineRunsLabel = computed(() => {
+  const label = aggregate.value?.label ?? ''
+  const m = label.match(/离线真跑\s*(\d+)\s*次/)
+  return m ? m[1] : null
+})
+const isOfflineDemoData = computed(() => offlineRunsLabel.value !== null)
+
 // 最高频去向（避免硬编码"焰火"——评委看 destination 分布会问"为什么所有人都去焰火"）
 const topDestination = computed(() => {
   const dist = aggregate.value?.destination_distribution
@@ -94,9 +107,16 @@ const topDestination = computed(() => {
         <button class="btn-ghost" @click="restart">重新开始</button>
       </div>
 
-      <!-- 透明说明：诚实标注 sim 真实次数 vs 统计扩展 -->
-      <p class="text-xs text-ink-500 mb-8 leading-relaxed max-w-4xl">
-        本次基于 <span class="text-ink-300">3 次真实 LLM-Multi-Agent 全流程春招 sim</span> outcome，
+      <!-- 透明说明：诚实标注 sim 真实次数 vs 统计扩展。demo 预置用户 vs 实时用户口径不同，
+           不能都写死"3 次"（demo 数据实际是离线真跑 30 次），否则两个数字互相打架 -->
+      <p v-if="isOfflineDemoData" class="text-xs text-ink-500 mb-8 leading-relaxed max-w-4xl">
+        本次为 <span class="text-ink-300">Demo 预置画像</span>，展示的是
+        <span class="text-ink-300">离线真跑 {{ offlineRunsLabel }} 次 LLM-Multi-Agent 全流程春招 sim</span>
+        校准得到的统计结论（现场秒回，不是实时重算），按统计口径映射到 1000 个平行宇宙的预测分布。
+        每个 sim 含约 300 公司 × 13 周招聘窗，从约 2000 人虚拟竞争者池中采样。
+      </p>
+      <p v-else class="text-xs text-ink-500 mb-8 leading-relaxed max-w-4xl">
+        本次基于 <span class="text-ink-300">3 次实时 LLM-Multi-Agent 全流程春招 sim</span> outcome，
         按统计 bootstrapping 扩展到 1000 个平行宇宙的预测分布。
         每个 sim 含约 300 公司 × 13 周招聘窗，从约 2000 人虚拟竞争者池中采样。
       </p>
